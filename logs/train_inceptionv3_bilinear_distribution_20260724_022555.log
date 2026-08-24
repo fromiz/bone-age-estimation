@@ -1,0 +1,205 @@
+TORCH_HOME: G:\Project\sinra_cho\.torch_cache
+PyTorch Hub cache: G:\Project\sinra_cho\.torch_cache\hub
+================================================================================
+base_dir     : G:\Project\sinra_cho
+dataset_root : G:\Project\sinra_cho\cropped_dataset_v1_3ch_enhance
+train_csv    : G:\Project\sinra_cho\cropped_dataset_v1_3ch_enhance\train_filtered.csv
+val_csv      : G:\Project\sinra_cho\boneage-validation-dataset\Validation Dataset.csv
+test_csv     : G:\Project\sinra_cho\Bone Age Test Set\Bone age ground truth.csv
+train_img_dir: G:\Project\sinra_cho\cropped_dataset_v1_3ch_enhance\train
+val_img_dir  : G:\Project\sinra_cho\cropped_dataset_v1_3ch_enhance\val
+test_img_dir : G:\Project\sinra_cho\cropped_dataset_v1_3ch_enhance\test
+output_dir   : G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results
+device       : cuda, amp=False
+model        : inception_v3, image_size=384
+bilinear     : proj1=256, proj2=64
+================================================================================
+[Model] backbone_ch=2048, feat_hw=(10, 10), proj2_dim=64, bilinear_dim=4096, sex_dim=32, num_bins=240
+[Normalize] mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5)
+
+Epoch 001/100
+train_loss=0.14815 | val_loss=0.10815 | Val MAE=13.975 | RMSE=19.316 | KL=0.9984 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=13.975, rmse=19.316)
+
+Epoch 002/100
+train_loss=0.09827 | val_loss=0.08755 | Val MAE=11.584 | RMSE=15.679 | KL=0.7857 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=11.584, rmse=15.679)
+
+Epoch 003/100
+train_loss=0.08200 | val_loss=0.07533 | Val MAE=10.089 | RMSE=13.738 | KL=0.6658 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=10.089, rmse=13.738)
+
+Epoch 004/100
+train_loss=0.07232 | val_loss=0.06946 | Val MAE=9.550 | RMSE=12.834 | KL=0.5933 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=9.550, rmse=12.834)
+
+Epoch 005/100
+train_loss=0.06497 | val_loss=0.06702 | Val MAE=9.486 | RMSE=12.622 | KL=0.5499 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=9.486, rmse=12.622)
+
+Epoch 006/100
+train_loss=0.06061 | val_loss=0.06324 | Val MAE=9.057 | RMSE=12.208 | KL=0.5100 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=9.057, rmse=12.208)
+
+Epoch 007/100
+train_loss=0.05658 | val_loss=0.06217 | Val MAE=8.992 | RMSE=12.114 | KL=0.4942 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=8.992, rmse=12.114)
+
+Epoch 008/100
+train_loss=0.05343 | val_loss=0.06045 | Val MAE=8.901 | RMSE=11.736 | KL=0.4673 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=8.901, rmse=11.736)
+
+Epoch 009/100
+train_loss=0.05079 | val_loss=0.05797 | Val MAE=8.644 | RMSE=11.464 | KL=0.4391 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=8.644, rmse=11.464)
+
+Epoch 010/100
+train_loss=0.04785 | val_loss=0.05752 | Val MAE=8.589 | RMSE=11.351 | KL=0.4346 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=8.589, rmse=11.351)
+
+Epoch 011/100
+train_loss=0.04636 | val_loss=0.05735 | Val MAE=8.610 | RMSE=11.366 | KL=0.4295 | lr=[1e-05, 0.0001]
+no improvement: 1/10
+
+Epoch 012/100
+train_loss=0.04408 | val_loss=0.05592 | Val MAE=8.461 | RMSE=11.203 | KL=0.4134 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=8.461, rmse=11.203)
+
+Epoch 013/100
+train_loss=0.04183 | val_loss=0.05504 | Val MAE=8.308 | RMSE=11.100 | KL=0.4085 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=8.308, rmse=11.100)
+
+Epoch 014/100
+train_loss=0.04048 | val_loss=0.05544 | Val MAE=8.382 | RMSE=11.218 | KL=0.4102 | lr=[1e-05, 0.0001]
+no improvement: 1/10
+
+Epoch 015/100
+train_loss=0.03919 | val_loss=0.05614 | Val MAE=8.562 | RMSE=11.350 | KL=0.4093 | lr=[1e-05, 0.0001]
+no improvement: 2/10
+
+Epoch 016/100
+train_loss=0.03730 | val_loss=0.05431 | Val MAE=8.306 | RMSE=11.083 | KL=0.3941 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=8.306, rmse=11.083)
+
+Epoch 017/100
+train_loss=0.03568 | val_loss=0.05502 | Val MAE=8.397 | RMSE=11.104 | KL=0.4007 | lr=[1e-05, 0.0001]
+no improvement: 1/10
+
+Epoch 018/100
+train_loss=0.03479 | val_loss=0.05655 | Val MAE=8.615 | RMSE=11.387 | KL=0.4131 | lr=[1e-05, 0.0001]
+no improvement: 2/10
+
+Epoch 019/100
+train_loss=0.03324 | val_loss=0.05587 | Val MAE=8.443 | RMSE=11.312 | KL=0.4138 | lr=[1e-05, 0.0001]
+no improvement: 3/10
+
+Epoch 020/100
+train_loss=0.03271 | val_loss=0.05449 | Val MAE=8.263 | RMSE=11.097 | KL=0.4011 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=8.263, rmse=11.097)
+
+Epoch 021/100
+train_loss=0.03118 | val_loss=0.05415 | Val MAE=8.198 | RMSE=11.047 | KL=0.3998 | lr=[1e-05, 0.0001]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=8.198, rmse=11.047)
+
+Epoch 022/100
+train_loss=0.03086 | val_loss=0.05514 | Val MAE=8.335 | RMSE=11.110 | KL=0.4083 | lr=[1e-05, 0.0001]
+no improvement: 1/10
+
+Epoch 023/100
+train_loss=0.02971 | val_loss=0.05406 | Val MAE=8.214 | RMSE=10.914 | KL=0.3967 | lr=[1e-05, 0.0001]
+no improvement: 2/10
+
+Epoch 024/100
+train_loss=0.02888 | val_loss=0.05489 | Val MAE=8.284 | RMSE=11.050 | KL=0.4075 | lr=[1e-05, 0.0001]
+no improvement: 3/10
+
+Epoch 025/100
+train_loss=0.02786 | val_loss=0.05438 | Val MAE=8.197 | RMSE=10.939 | KL=0.4044 | lr=[5e-06, 5e-05]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=8.197, rmse=10.939)
+
+Epoch 026/100
+train_loss=0.02539 | val_loss=0.05411 | Val MAE=8.155 | RMSE=10.918 | KL=0.4026 | lr=[5e-06, 5e-05]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=8.155, rmse=10.918)
+
+Epoch 027/100
+train_loss=0.02456 | val_loss=0.05339 | Val MAE=8.101 | RMSE=10.751 | KL=0.3927 | lr=[5e-06, 5e-05]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=8.101, rmse=10.751)
+
+Epoch 028/100
+train_loss=0.02376 | val_loss=0.05423 | Val MAE=8.194 | RMSE=10.887 | KL=0.4016 | lr=[5e-06, 5e-05]
+no improvement: 1/10
+
+Epoch 029/100
+train_loss=0.02343 | val_loss=0.05527 | Val MAE=8.290 | RMSE=11.006 | KL=0.4146 | lr=[5e-06, 5e-05]
+no improvement: 2/10
+
+Epoch 030/100
+train_loss=0.02293 | val_loss=0.05389 | Val MAE=8.130 | RMSE=10.744 | KL=0.4003 | lr=[5e-06, 5e-05]
+no improvement: 3/10
+
+Epoch 031/100
+train_loss=0.02262 | val_loss=0.05501 | Val MAE=8.250 | RMSE=10.919 | KL=0.4128 | lr=[2.5e-06, 2.5e-05]
+no improvement: 4/10
+
+Epoch 032/100
+train_loss=0.02136 | val_loss=0.05467 | Val MAE=8.198 | RMSE=10.849 | KL=0.4102 | lr=[2.5e-06, 2.5e-05]
+no improvement: 5/10
+
+Epoch 033/100
+train_loss=0.02090 | val_loss=0.05465 | Val MAE=8.202 | RMSE=10.875 | KL=0.4095 | lr=[2.5e-06, 2.5e-05]
+no improvement: 6/10
+
+Epoch 034/100
+train_loss=0.02060 | val_loss=0.05370 | Val MAE=8.084 | RMSE=10.681 | KL=0.4003 | lr=[2.5e-06, 2.5e-05]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=8.084, rmse=10.681)
+
+Epoch 035/100
+train_loss=0.02028 | val_loss=0.05365 | Val MAE=8.073 | RMSE=10.628 | KL=0.4002 | lr=[2.5e-06, 2.5e-05]
+saved best: G:\Project\sinra_cho\inceptionv3_bilinear_distribution_results\best_inceptionv3_bilinear_distribution.pt (best_mae=8.073, rmse=10.628)
+
+Epoch 036/100
+train_loss=0.01998 | val_loss=0.05414 | Val MAE=8.124 | RMSE=10.838 | KL=0.4057 | lr=[2.5e-06, 2.5e-05]
+no improvement: 1/10
+
+Epoch 037/100
+train_loss=0.01994 | val_loss=0.05506 | Val MAE=8.234 | RMSE=10.930 | KL=0.4151 | lr=[2.5e-06, 2.5e-05]
+no improvement: 2/10
+
+Epoch 038/100
+train_loss=0.01936 | val_loss=0.05457 | Val MAE=8.166 | RMSE=10.801 | KL=0.4110 | lr=[2.5e-06, 2.5e-05]
+no improvement: 3/10
+
+Epoch 039/100
+train_loss=0.01927 | val_loss=0.05406 | Val MAE=8.101 | RMSE=10.777 | KL=0.4061 | lr=[1.25e-06, 1.25e-05]
+no improvement: 4/10
+
+Epoch 040/100
+train_loss=0.01879 | val_loss=0.05433 | Val MAE=8.144 | RMSE=10.789 | KL=0.4080 | lr=[1.25e-06, 1.25e-05]
+no improvement: 5/10
+
+Epoch 041/100
+train_loss=0.01855 | val_loss=0.05452 | Val MAE=8.152 | RMSE=10.792 | KL=0.4110 | lr=[1.25e-06, 1.25e-05]
+no improvement: 6/10
+
+Epoch 042/100
+train_loss=0.01844 | val_loss=0.05420 | Val MAE=8.103 | RMSE=10.769 | KL=0.4088 | lr=[1.25e-06, 1.25e-05]
+no improvement: 7/10
+
+Epoch 043/100
+train_loss=0.01837 | val_loss=0.05420 | Val MAE=8.124 | RMSE=10.713 | KL=0.4071 | lr=[6.25e-07, 6.25e-06]
+no improvement: 8/10
+
+Epoch 044/100
+train_loss=0.01799 | val_loss=0.05431 | Val MAE=8.117 | RMSE=10.756 | KL=0.4097 | lr=[6.25e-07, 6.25e-06]
+no improvement: 9/10
+
+Epoch 045/100
+train_loss=0.01794 | val_loss=0.05456 | Val MAE=8.134 | RMSE=10.810 | KL=0.4134 | lr=[6.25e-07, 6.25e-06]
+no improvement: 10/10
+Early stopping at epoch 45. Best epoch=35, best MAE=8.073
+
+================================================================================
+BEST: epoch=35, Val MAE=8.073, RMSE=10.628
+================================================================================
+Final Val MAE=8.073, RMSE=10.628
+Final Test MAE=7.997, RMSE=10.755

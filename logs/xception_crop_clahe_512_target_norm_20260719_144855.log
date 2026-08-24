@@ -1,0 +1,134 @@
+TORCH_HOME: C:\Users\K\Project\sinra_cho\.torch_cache
+PyTorch Hub 캐시: C:\Users\K\Project\sinra_cho\.torch_cache\hub
+================================================================================
+Experiment: xception_crop_clahe_512_target_norm
+Device: cuda
+PyTorch: 2.6.0+cu124
+timm: 1.0.28
+GPU: NVIDIA A100 80GB PCIe
+================================================================================
+Train CSV: True | C:\Users\K\Project\sinra_cho\cropped_dataset_clahe\train_filtered.csv
+Train image dir: True | C:\Users\K\Project\sinra_cho\cropped_dataset_clahe\train
+Validation CSV: True | C:\Users\K\Project\sinra_cho\boneage-validation-dataset\Validation Dataset.csv
+Validation image dir: True | C:\Users\K\Project\sinra_cho\cropped_dataset_clahe\val
+
+[CSV]
+Train: (12576, 3)
+Validation: (1425, 3)
+
+[Target Normalization]
+TARGET_MEAN: 127.3785782442748
+TARGET_STD: 41.09851674508998
+train: 12576 images
+val: 1425 images
+Train missing images: 0
+Validation missing images: 0
+
+[Train]
+count: 12576
+boneage mean: 127.379
+boneage std: 41.099
+boneage min: 1.0
+boneage max: 228.0
+male ratio: 0.542
+
+[Validation]
+count: 1425
+boneage mean: 127.156
+boneage std: 41.722
+boneage min: 3.0
+boneage max: 228.0
+male ratio: 0.542
+
+[DataLoader]
+Train samples: 12576
+Validation samples: 1425
+Train batches: 786
+Validation batches: 45
+Image shape: torch.Size([16, 3, 512, 512])
+Sex shape: torch.Size([16, 1])
+Bone age norm shape: torch.Size([16])
+Bone age month shape: torch.Size([16])
+Bone age month examples: tensor([132., 162., 144., 138.,  82.])
+Bone age norm examples: tensor([ 0.1124,  0.8424,  0.4044,  0.2584, -1.1041])
+image_feature_dim: 6400
+
+[Model]
+Model device: cuda:0
+Total parameters: 25,532,297
+Trainable parameters: 25,532,297
+Xception feature: torch.Size([2, 2048, 16, 16])
+Conv feature: torch.Size([2, 256, 16, 16])
+Pool feature: torch.Size([2, 256, 5, 5])
+Image vector: torch.Size([2, 6400])
+Sex vector: torch.Size([2, 32])
+Prediction norm: torch.Size([2])
+Prediction month: torch.Size([2])
+
+[Training Start]
+BEST_MODEL_PATH: C:\Users\K\Project\sinra_cho\models\best_xception_crop_clahe_512_target_norm.pt
+HISTORY_PATH: C:\Users\K\Project\sinra_cho\models\history_xception_crop_clahe_512_target_norm.csv
+================================================================================
+Epoch 01 | Train MAE: 13.053개월 | Val MAE: 8.734개월 | Val RMSE: 11.625개월 | Norm Loss: 0.2125 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 773.0s
+최적 모델 저장: 8.734개월
+Epoch 02 | Train MAE: 8.816개월 | Val MAE: 8.321개월 | Val RMSE: 11.072개월 | Norm Loss: 0.2025 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 655.5s
+최적 모델 저장: 8.321개월
+Epoch 03 | Train MAE: 8.152개월 | Val MAE: 8.357개월 | Val RMSE: 10.938개월 | Norm Loss: 0.2033 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 655.0s
+성능 미개선: 1/8
+Epoch 04 | Train MAE: 7.656개월 | Val MAE: 7.763개월 | Val RMSE: 10.204개월 | Norm Loss: 0.1889 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 655.5s
+최적 모델 저장: 7.763개월
+Epoch 05 | Train MAE: 7.180개월 | Val MAE: 8.211개월 | Val RMSE: 11.207개월 | Norm Loss: 0.1998 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 651.7s
+성능 미개선: 1/8
+Epoch 06 | Train MAE: 7.102개월 | Val MAE: 7.187개월 | Val RMSE: 9.728개월 | Norm Loss: 0.1749 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 655.0s
+최적 모델 저장: 7.187개월
+Epoch 07 | Train MAE: 6.673개월 | Val MAE: 7.627개월 | Val RMSE: 10.152개월 | Norm Loss: 0.1856 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 647.7s
+성능 미개선: 1/8
+Epoch 08 | Train MAE: 6.423개월 | Val MAE: 7.217개월 | Val RMSE: 9.680개월 | Norm Loss: 0.1756 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 650.5s
+성능 미개선: 2/8
+Epoch 09 | Train MAE: 6.156개월 | Val MAE: 7.267개월 | Val RMSE: 9.776개월 | Norm Loss: 0.1768 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 646.5s
+성능 미개선: 3/8
+Epoch 10 | Train MAE: 5.926개월 | Val MAE: 7.820개월 | Val RMSE: 10.330개월 | Norm Loss: 0.1903 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 652.7s
+성능 미개선: 4/8
+Epoch 11 | Train MAE: 5.065개월 | Val MAE: 7.475개월 | Val RMSE: 10.067개월 | Norm Loss: 0.1819 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 648.4s
+성능 미개선: 5/8
+Epoch 12 | Train MAE: 4.707개월 | Val MAE: 7.260개월 | Val RMSE: 9.654개월 | Norm Loss: 0.1766 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 652.3s
+성능 미개선: 6/8
+Epoch 13 | Train MAE: 4.472개월 | Val MAE: 7.788개월 | Val RMSE: 10.548개월 | Norm Loss: 0.1895 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 649.7s
+성능 미개선: 7/8
+Epoch 14 | Train MAE: 4.210개월 | Val MAE: 7.158개월 | Val RMSE: 9.689개월 | Norm Loss: 0.1742 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 648.8s
+최적 모델 저장: 7.158개월
+Epoch 15 | Train MAE: 3.981개월 | Val MAE: 7.134개월 | Val RMSE: 9.599개월 | Norm Loss: 0.1736 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 649.1s
+최적 모델 저장: 7.134개월
+Epoch 16 | Train MAE: 3.877개월 | Val MAE: 7.295개월 | Val RMSE: 9.839개월 | Norm Loss: 0.1775 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 644.2s
+성능 미개선: 1/8
+Epoch 17 | Train MAE: 3.758개월 | Val MAE: 7.023개월 | Val RMSE: 9.464개월 | Norm Loss: 0.1709 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 644.4s
+최적 모델 저장: 7.023개월
+Epoch 18 | Train MAE: 3.560개월 | Val MAE: 7.316개월 | Val RMSE: 9.847개월 | Norm Loss: 0.1780 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 645.1s
+성능 미개선: 1/8
+Epoch 19 | Train MAE: 3.509개월 | Val MAE: 7.294개월 | Val RMSE: 9.752개월 | Norm Loss: 0.1775 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 649.1s
+성능 미개선: 2/8
+Epoch 20 | Train MAE: 3.366개월 | Val MAE: 7.303개월 | Val RMSE: 9.753개월 | Norm Loss: 0.1777 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 656.6s
+성능 미개선: 3/8
+Epoch 21 | Train MAE: 3.304개월 | Val MAE: 7.176개월 | Val RMSE: 9.631개월 | Norm Loss: 0.1746 | Backbone LR: 2.50e-05 | Head LR: 2.50e-04 | Time: 638.7s
+성능 미개선: 4/8
+Epoch 22 | Train MAE: 2.877개월 | Val MAE: 7.139개월 | Val RMSE: 9.579개월 | Norm Loss: 0.1737 | Backbone LR: 2.50e-05 | Head LR: 2.50e-04 | Time: 633.3s
+성능 미개선: 5/8
+Epoch 23 | Train MAE: 2.709개월 | Val MAE: 7.104개월 | Val RMSE: 9.517개월 | Norm Loss: 0.1729 | Backbone LR: 2.50e-05 | Head LR: 2.50e-04 | Time: 620.7s
+성능 미개선: 6/8
+Epoch 24 | Train MAE: 2.597개월 | Val MAE: 7.140개월 | Val RMSE: 9.547개월 | Norm Loss: 0.1737 | Backbone LR: 2.50e-05 | Head LR: 2.50e-04 | Time: 618.1s
+성능 미개선: 7/8
+Epoch 25 | Train MAE: 2.516개월 | Val MAE: 7.193개월 | Val RMSE: 9.647개월 | Norm Loss: 0.1750 | Backbone LR: 1.25e-05 | Head LR: 1.25e-04 | Time: 627.9s
+성능 미개선: 8/8
+Early stopping
+================================================================================
+Training finished
+Best Validation MAE: 7.023개월
+Total time: 271.2 min
+================================================================================
+
+[Best Validation Result]
+Best epoch: 17
+Saved best Val MAE: 7.023348426149602
+Reloaded Val MAE: 7.023348426149602
+Reloaded Val RMSE: 9.464169150232973
+Validation prediction saved: C:\Users\K\Project\sinra_cho\models\val_predictions_xception_crop_clahe_512_target_norm.csv

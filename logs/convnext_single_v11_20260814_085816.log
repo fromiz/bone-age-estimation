@@ -1,0 +1,390 @@
+========================================================================
+[08:58:20] ConvNeXt-Tiny + LDL 기대값 회귀 골연령 시작 [v11]
+[08:58:20] Python 3.12.7 | Windows 11
+[08:58:20] PyTorch 2.6.0+cu124 | torchvision 0.21.0+cu124 | timm 1.0.28
+[08:58:20] OpenCV 5.0.0 | numpy 2.5.1 | pandas 3.0.3
+[08:58:20] device cuda | CUDA True | AMP True
+[GPU-GUARD] (inproc) 바로 실행 — 티켓 366번 infer 16000MiB
+[08:58:21] GPU NVIDIA A100 80GB PCIe | VRAM 79.5GB | sm_80 | CUDA 12.4
+[08:58:21] HAND_CROP_DIR  G:\Project\sinra_cho\crop_data_yolox_s
+[08:58:21] CSV_DIR        G:\Project\sinra_cho\crop_data_yolox_s
+[08:58:21] CACHE_DIR      G:\Project\sinra_cho\cache_convnext_single_v11\raw768x512_letterbox_pad0_center_np1p99
+[08:58:21] CKPT_DIR       G:\Project\sinra_cho\checkpoints_convnext_single_v11_ldl
+[08:58:21] 이미지 준비    letterbox -> 768x512(HxW) | pad 0 | 강도정규화 p1p99
+[08:58:21] 백본           convnext_tiny.fb_in22k_ft_in1k_384 (drop_path 0.15)
+[08:58:21] 헤드           gap | 성별임베딩 32 | dropout 0.1
+[08:58:21] 최적화         AdamW | lr 4e-05/1e-04 | wd 0.05 | 배치 24x1=24
+[08:58:21] 스케줄         warmup 3ep + cosine(min ratio 0.02) | 총 40ep | 조기종료 끔
+[08:58:21] 손실 LDL(bins 240, δ 15.0, λ 0.5) | 증강 True | EMA True(0.9995) | best 선택 'ema'
+[08:58:21] 증강 상세      affine rot12° tr0.1 sc(0.82, 1.22) sh4 | jitter ±0.25 | erasing p=0.25
+[08:58:21] [v9] 증강 스케일 (0.82, 1.22) · 이동 0.1 · 회전 12°
+[08:58:21] [v9] 도메인증강 jpeg0.35 gamma0.35 blur0.2 noise0.2
+[08:58:21] [v10] 구간가중  가우시안 테이퍼 center 96개월 · sigma 48 · peak x1.35
+[08:58:21] [v11] LDL λ 0.5 · EPOCHS 40 · warmup 3  (v10 1.0/60/4 에서 원복)
+[08:58:21] [v11] FiLM 성별조건화 ON stages=[2, 3] hidden=64
+[08:58:21] [v11] 평가 리포트에 성별 분해 · 성별x연령 교차 · 성별 플립 테스트 포함
+[08:58:21] 추론           TTA [0, -6, -3, 3, 6] | 캘리브레이션 자동판정
+[08:58:21] DataLoader     num_workers=0
+[08:58:21] 실행 옵션      (없음)
+========================================================================
+[08:58:21] 라벨 로드 중...
+[08:58:21]   train 라벨 12,440 | 파일 12,440 | 미크롭    0 -> 사용 12,440
+[08:58:21]   val   라벨  1,399 | 파일  1,399 | 미크롭    0 -> 사용  1,399
+[08:58:21]   test  라벨    197 | 파일    197 | 미크롭    0 -> 사용    197
+[08:58:21] 타깃 정규화 사용 안 함 (LDL - 개월 원단위) · 참고용 train 통계 127.48 ± 40.94 개월
+[08:58:21] [QC-LDL] 이산화 하한 MAE = 0.093 개월 (δ=15.0, bins=1~240, val 라벨 기준)
+[08:58:21] 남아 비율 54.2% | 연령 범위 1~228 개월
+[08:58:21] 실행 환경 스냅샷 저장: G:\Project\sinra_cho\checkpoints_convnext_single_v11_ldl\env_20260814_085820.json
+[08:58:21] [스테이지1] 캐시 경로 G:\Project\sinra_cho\cache_convnext_single_v11\raw768x512_letterbox_pad0_center_np1p99
+[08:58:21] [스테이지1] 크롭 소스 G:\Project\sinra_cho\crop_data_yolox_s
+[08:58:21] [스테이지1] 캐시 유효 - 스킵 (재생성: --rebuild-cache)
+[08:58:21] [QC] 강도 정규화 검증 시트 생성
+[08:58:24] [QC] 시트 저장: G:\Project\sinra_cho\checkpoints_convnext_single_v11_ldl\qc_intensity_norm.png
+[08:58:24] 
+   id      원본크기   원본범위  원본std  유효std 여백%
+ 2823   704x991 36~255   12.6   68.5  6%
+ 9149  858x1051  1~254   43.7   71.6 18%
+ 6999  807x1069  0~214   49.7   74.5 12%
+10657  862x1106  0~255   40.5   68.1 14%
+ 5768 1210x1320  0~255   43.1   68.6 27%
+ 3359  855x1081  39~96    8.3   71.9 16%
+13160 1084x1336  0~207   38.7   69.4 18%
+ 4579 1173x1661 15~255   58.6   76.6  6%
+[08:58:24] [QC] std 변동계수(CV):  원본 0.474  ->  캔버스 0.044
+[08:58:24] [QC] 정상 - 이미지 간 대비 편차가 크게 줄었습니다.
+[08:58:24] [QC] 샘플 여백 중앙 15%
+[08:58:24] [스테이지2] 배치 수: train 518 | val 59
+[08:58:25] [backbone] convnext_tiny.fb_in22k_ft_in1k_384 (pretrained=True, drop_path=0.15)
+[08:58:25] [head] FiLM 성별조건화 stages=[2, 3] 채널=[384, 768] (0 초기화=항등)
+[08:58:25] [head] 입력 768x512 -> 특징맵 768x24x16 · head_type=gap
+[08:58:25] [head] 출력 240 (LDL 로짓 - softmax 기대값으로 환산)
+G:\Project\sinra_cho\.venv\Lib\site-packages\torch\nn\modules\module.py:1329: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:28.)
+  return t.to(
+[08:58:25] [스테이지2] 파라미터 28.5M
+[08:58:25] [스테이지2] 파라미터 그룹:
+[08:58:25]   bb_decay    tensors= 58 params= 27.76M lr=4.0e-05 wd=0.05
+[08:58:25]   bb_nodecay  tensors=122 params=  0.06M lr=4.0e-05 wd=0.0
+[08:58:25]   hd_decay    tensors=  8 params=  0.64M lr=1.0e-04 wd=0.05
+[08:58:25]   hd_nodecay  tensors= 10 params=  0.00M lr=1.0e-04 wd=0.0
+[08:58:25] [스테이지2] 옵티마이저 스텝: 에폭당 518 · 총 20720 · warmup 1554
+[08:58:25] [스테이지2] EMA 유효 창 ≈ 3.9 에폭
+[08:58:25] [스테이지2] best.pt 선택 규칙 = 'ema' (학습 전 고정)
+[08:58:25] [스테이지2] 새 학습 시작
+[08:58:25] [손실] LDL  ℓ_MAE + 0.5·KL(G‖p)  (bins 240, δ 15.0)
+[09:00:32]     ep01   103/518 train_mae 34.17 lr 6.63e-06
+[09:02:13]     ep01   206/518 train_mae 34.02 lr 1.33e-05
+[09:03:52]     ep01   309/518 train_mae 33.29 lr 1.99e-05
+[09:05:30]     ep01   412/518 train_mae 32.32 lr 2.65e-05
+[09:07:10]     ep01   515/518 train_mae 30.93 lr 3.31e-05
+[09:07:51] [01/40] train 30.87 | val 13.15 (rmse 18.50) | KL 1.375 | val(ema) 34.49 | lr 33% | 9.4분  ** best.pt(ema) 34.49 **  [raw/ema 갱신]
+[09:08:57]     ep02   103/518 train_mae 21.29 lr 4.00e-05
+[09:10:04]     ep02   206/518 train_mae 18.82 lr 4.66e-05
+[09:11:09]     ep02   309/518 train_mae 16.91 lr 5.32e-05
+[09:12:16]     ep02   412/518 train_mae 15.87 lr 5.98e-05
+[09:13:23]     ep02   515/518 train_mae 15.04 lr 6.65e-05
+[09:13:53] [02/40] train 15.01 | val 9.20 (rmse 12.08) | KL 1.461 | val(ema) 31.70 | lr 67% | 6.0분  ** best.pt(ema) 31.70 **  [raw/ema 갱신]
+[09:14:59]     ep03   103/518 train_mae 10.87 lr 7.33e-05
+[09:16:03]     ep03   206/518 train_mae 10.90 lr 7.99e-05
+[09:17:07]     ep03   309/518 train_mae 10.60 lr 8.66e-05
+[09:18:11]     ep03   412/518 train_mae 10.46 lr 9.32e-05
+[09:19:17]     ep03   515/518 train_mae 10.29 lr 9.98e-05
+[09:19:50] [03/40] train 10.28 | val 7.81 (rmse 10.48) | KL 1.258 | val(ema) 25.64 | lr 100% | 5.9분  ** best.pt(ema) 25.64 **  [raw/ema 갱신]
+[09:20:58]     ep04   103/518 train_mae 9.42 lr 1.00e-04
+[09:22:02]     ep04   206/518 train_mae 9.44 lr 1.00e-04
+[09:23:07]     ep04   309/518 train_mae 9.38 lr 9.99e-05
+[09:24:15]     ep04   412/518 train_mae 9.18 lr 9.99e-05
+[09:25:20]     ep04   515/518 train_mae 9.11 lr 9.98e-05
+[09:25:53] [04/40] train 9.11 | val 7.65 (rmse 9.96) | KL 1.056 | val(ema) 21.37 | lr 100% | 6.0분  ** best.pt(ema) 21.37 **  [raw/ema 갱신]
+[09:27:01]     ep05   103/518 train_mae 8.62 lr 9.97e-05
+[09:28:06]     ep05   206/518 train_mae 8.41 lr 9.97e-05
+[09:29:12]     ep05   309/518 train_mae 8.34 lr 9.96e-05
+[09:30:16]     ep05   412/518 train_mae 8.22 lr 9.94e-05
+[09:31:21]     ep05   515/518 train_mae 8.14 lr 9.93e-05
+[09:31:53] [05/40] train 8.16 | val 7.04 (rmse 9.32) | KL 0.904 | val(ema) 17.43 | lr 99% | 6.0분  ** best.pt(ema) 17.43 **  [raw/ema 갱신]
+[09:32:58]     ep06   103/518 train_mae 8.02 lr 9.91e-05
+[09:34:03]     ep06   206/518 train_mae 7.94 lr 9.90e-05
+[09:35:07]     ep06   309/518 train_mae 7.89 lr 9.88e-05
+[09:36:11]     ep06   412/518 train_mae 7.82 lr 9.86e-05
+[09:37:17]     ep06   515/518 train_mae 7.77 lr 9.84e-05
+[09:37:45] [06/40] train 7.77 | val 7.15 (rmse 9.45) | KL 0.760 | val(ema) 13.68 | lr 98% | 5.9분  ** best.pt(ema) 13.68 **  [ema 갱신]
+[09:38:53]     ep07   103/518 train_mae 7.48 lr 9.82e-05
+[09:39:59]     ep07   206/518 train_mae 7.35 lr 9.80e-05
+[09:41:07]     ep07   309/518 train_mae 7.42 lr 9.77e-05
+[09:42:14]     ep07   412/518 train_mae 7.43 lr 9.75e-05
+[09:43:20]     ep07   515/518 train_mae 7.46 lr 9.72e-05
+[09:43:51] [07/40] train 7.46 | val 6.95 (rmse 9.22) | KL 0.641 | val(ema) 10.75 | lr 97% | 6.1분  ** best.pt(ema) 10.75 **  [raw/ema 갱신]
+[09:44:57]     ep08   103/518 train_mae 7.37 lr 9.69e-05
+[09:46:05]     ep08   206/518 train_mae 7.53 lr 9.66e-05
+[09:47:16]     ep08   309/518 train_mae 7.42 lr 9.63e-05
+[09:48:25]     ep08   412/518 train_mae 7.30 lr 9.60e-05
+[09:49:32]     ep08   515/518 train_mae 7.26 lr 9.57e-05
+[09:50:05] [08/40] train 7.25 | val 7.01 (rmse 9.42) | KL 0.542 | val(ema) 8.75 | lr 96% | 6.2분  ** best.pt(ema) 8.75 **  [ema 갱신]
+[09:51:14]     ep09   103/518 train_mae 7.28 lr 9.53e-05
+[09:52:22]     ep09   206/518 train_mae 7.18 lr 9.49e-05
+[09:53:47]     ep09   309/518 train_mae 7.16 lr 9.46e-05
+[09:55:13]     ep09   412/518 train_mae 7.16 lr 9.42e-05
+[09:56:39]     ep09   515/518 train_mae 7.15 lr 9.38e-05
+[09:57:19] [09/40] train 7.16 | val 6.61 (rmse 8.85) | KL 0.465 | val(ema) 7.59 | lr 94% | 7.2분  ** best.pt(ema) 7.59 **  [raw/ema 갱신]
+[09:58:47]     ep10   103/518 train_mae 6.96 lr 9.34e-05
+[10:00:12]     ep10   206/518 train_mae 7.12 lr 9.30e-05
+[10:01:37]     ep10   309/518 train_mae 7.10 lr 9.25e-05
+[10:03:02]     ep10   412/518 train_mae 7.06 lr 9.21e-05
+[10:04:27]     ep10   515/518 train_mae 7.03 lr 9.16e-05
+[10:05:03] [10/40] train 7.02 | val 6.51 (rmse 8.84) | KL 0.413 | val(ema) 6.97 | lr 92% | 7.7분  ** best.pt(ema) 6.97 **  [raw/ema 갱신]
+[10:06:33]     ep11   103/518 train_mae 6.92 lr 9.11e-05
+[10:08:00]     ep11   206/518 train_mae 6.93 lr 9.07e-05
+[10:09:25]     ep11   309/518 train_mae 6.85 lr 9.02e-05
+[10:10:53]     ep11   412/518 train_mae 6.86 lr 8.97e-05
+[10:12:22]     ep11   515/518 train_mae 6.85 lr 8.91e-05
+[10:12:58] [11/40] train 6.85 | val 6.10 (rmse 8.29) | KL 0.370 | val(ema) 6.64 | lr 89% | 7.9분  ** best.pt(ema) 6.64 **  [raw/ema 갱신]
+[10:14:24]     ep12   103/518 train_mae 6.83 lr 8.86e-05
+[10:15:50]     ep12   206/518 train_mae 6.80 lr 8.81e-05
+[10:17:17]     ep12   309/518 train_mae 6.82 lr 8.75e-05
+[10:18:43]     ep12   412/518 train_mae 6.80 lr 8.70e-05
+[10:20:05]     ep12   515/518 train_mae 6.78 lr 8.64e-05
+[10:20:40] [12/40] train 6.78 | val 6.52 (rmse 8.83) | KL 0.337 | val(ema) 6.45 | lr 86% | 7.7분  ** best.pt(ema) 6.45 **  [ema 갱신]
+[10:22:09]     ep13   103/518 train_mae 6.78 lr 8.58e-05
+[10:23:36]     ep13   206/518 train_mae 6.82 lr 8.52e-05
+[10:25:00]     ep13   309/518 train_mae 6.80 lr 8.46e-05
+[10:26:27]     ep13   412/518 train_mae 6.74 lr 8.40e-05
+[10:27:54]     ep13   515/518 train_mae 6.74 lr 8.34e-05
+[10:28:30] [13/40] train 6.75 | val 6.07 (rmse 8.28) | KL 0.317 | val(ema) 6.31 | lr 83% | 7.8분  ** best.pt(ema) 6.31 **  [raw/ema 갱신]
+[10:30:01]     ep14   103/518 train_mae 6.70 lr 8.28e-05
+[10:31:24]     ep14   206/518 train_mae 6.58 lr 8.21e-05
+[10:32:52]     ep14   309/518 train_mae 6.56 lr 8.15e-05
+[10:34:18]     ep14   412/518 train_mae 6.62 lr 8.08e-05
+[10:35:43]     ep14   515/518 train_mae 6.62 lr 8.02e-05
+[10:36:23] [14/40] train 6.62 | val 6.13 (rmse 8.33) | KL 0.300 | val(ema) 6.23 | lr 80% | 7.9분  ** best.pt(ema) 6.23 **  [ema 갱신]
+[10:37:48]     ep15   103/518 train_mae 6.71 lr 7.95e-05
+[10:39:13]     ep15   206/518 train_mae 6.63 lr 7.88e-05
+[10:40:39]     ep15   309/518 train_mae 6.57 lr 7.81e-05
+[10:42:08]     ep15   412/518 train_mae 6.55 lr 7.74e-05
+[10:43:32]     ep15   515/518 train_mae 6.54 lr 7.67e-05
+[10:44:10] [15/40] train 6.54 | val 6.17 (rmse 8.27) | KL 0.291 | val(ema) 6.16 | lr 77% | 7.8분  ** best.pt(ema) 6.16 **  [ema 갱신]
+[10:45:38]     ep16   103/518 train_mae 6.43 lr 7.60e-05
+[10:46:58]     ep16   206/518 train_mae 6.53 lr 7.53e-05
+[10:48:23]     ep16   309/518 train_mae 6.50 lr 7.46e-05
+[10:49:46]     ep16   412/518 train_mae 6.51 lr 7.38e-05
+[10:51:08]     ep16   515/518 train_mae 6.46 lr 7.31e-05
+[10:51:43] [16/40] train 6.46 | val 6.10 (rmse 8.28) | KL 0.282 | val(ema) 6.10 | lr 73% | 7.5분  ** best.pt(ema) 6.10 **  [ema 갱신]
+[10:53:07]     ep17   103/518 train_mae 6.22 lr 7.23e-05
+[10:54:29]     ep17   206/518 train_mae 6.37 lr 7.16e-05
+[10:55:51]     ep17   309/518 train_mae 6.39 lr 7.08e-05
+[10:57:14]     ep17   412/518 train_mae 6.41 lr 7.01e-05
+[10:58:36]     ep17   515/518 train_mae 6.40 lr 6.93e-05
+[10:59:12] [17/40] train 6.41 | val 6.21 (rmse 8.49) | KL 0.274 | val(ema) 6.06 | lr 69% | 7.5분  ** best.pt(ema) 6.06 **  [ema 갱신]
+[11:00:33]     ep18   103/518 train_mae 6.44 lr 6.85e-05
+[11:01:58]     ep18   206/518 train_mae 6.37 lr 6.77e-05
+[11:03:20]     ep18   309/518 train_mae 6.42 lr 6.70e-05
+[11:04:42]     ep18   412/518 train_mae 6.40 lr 6.62e-05
+[11:06:06]     ep18   515/518 train_mae 6.41 lr 6.54e-05
+[11:06:41] [18/40] train 6.40 | val 6.32 (rmse 8.58) | KL 0.269 | val(ema) 6.01 | lr 65% | 7.5분  ** best.pt(ema) 6.01 **  [ema 갱신]
+[11:08:07]     ep19   103/518 train_mae 6.23 lr 6.46e-05
+[11:09:29]     ep19   206/518 train_mae 6.32 lr 6.38e-05
+[11:10:51]     ep19   309/518 train_mae 6.35 lr 6.30e-05
+[11:12:15]     ep19   412/518 train_mae 6.30 lr 6.22e-05
+[11:13:37]     ep19   515/518 train_mae 6.32 lr 6.14e-05
+[11:14:13] [19/40] train 6.32 | val 5.90 (rmse 8.13) | KL 0.263 | val(ema) 5.97 | lr 61% | 7.5분  ** best.pt(ema) 5.97 **  [raw/ema 갱신]
+[11:15:37]     ep20   103/518 train_mae 6.10 lr 6.05e-05
+[11:17:05]     ep20   206/518 train_mae 6.24 lr 5.97e-05
+[11:18:34]     ep20   309/518 train_mae 6.26 lr 5.89e-05
+[11:20:03]     ep20   412/518 train_mae 6.27 lr 5.81e-05
+[11:21:33]     ep20   515/518 train_mae 6.24 lr 5.73e-05
+[11:22:11] [20/40] train 6.25 | val 5.97 (rmse 8.15) | KL 0.257 | val(ema) 5.93 | lr 57% | 7.9분  ** best.pt(ema) 5.93 **  [ema 갱신]
+[11:23:37]     ep21   103/518 train_mae 6.38 lr 5.64e-05
+[11:25:05]     ep21   206/518 train_mae 6.28 lr 5.56e-05
+[11:26:28]     ep21   309/518 train_mae 6.25 lr 5.48e-05
+[11:27:51]     ep21   412/518 train_mae 6.24 lr 5.39e-05
+[11:29:13]     ep21   515/518 train_mae 6.20 lr 5.31e-05
+[11:29:49] [21/40] train 6.20 | val 6.16 (rmse 8.37) | KL 0.250 | val(ema) 5.92 | lr 53% | 7.6분  ** best.pt(ema) 5.92 **  [ema 갱신]
+[11:31:12]     ep22   103/518 train_mae 6.15 lr 5.23e-05
+[11:32:35]     ep22   206/518 train_mae 6.13 lr 5.14e-05
+[11:33:57]     ep22   309/518 train_mae 6.11 lr 5.06e-05
+[11:35:21]     ep22   412/518 train_mae 6.15 lr 4.98e-05
+[11:36:44]     ep22   515/518 train_mae 6.14 lr 4.90e-05
+[11:37:20] [22/40] train 6.14 | val 5.91 (rmse 8.11) | KL 0.246 | val(ema) 5.90 | lr 49% | 7.5분  ** best.pt(ema) 5.90 **  [ema 갱신]
+[11:38:44]     ep23   103/518 train_mae 5.94 lr 4.81e-05
+[11:40:06]     ep23   206/518 train_mae 5.95 lr 4.73e-05
+[11:41:29]     ep23   309/518 train_mae 5.97 lr 4.65e-05
+[11:42:54]     ep23   412/518 train_mae 6.00 lr 4.56e-05
+[11:44:16]     ep23   515/518 train_mae 6.00 lr 4.48e-05
+[11:44:51] [23/40] train 5.99 | val 5.95 (rmse 8.14) | KL 0.238 | val(ema) 5.89 | lr 45% | 7.5분  ** best.pt(ema) 5.89 **  [ema 갱신]
+[11:46:16]     ep24   103/518 train_mae 5.87 lr 4.40e-05
+[11:47:38]     ep24   206/518 train_mae 6.01 lr 4.31e-05
+[11:49:01]     ep24   309/518 train_mae 6.07 lr 4.23e-05
+[11:50:25]     ep24   412/518 train_mae 6.03 lr 4.15e-05
+[11:51:46]     ep24   515/518 train_mae 6.03 lr 4.07e-05
+[11:52:21] [24/40] train 6.02 | val 5.94 (rmse 8.18) | KL 0.237 | val(ema) 5.88 | lr 41% | 7.5분  ** best.pt(ema) 5.88 **  [ema 갱신]
+[11:53:44]     ep25   103/518 train_mae 6.08 lr 3.99e-05
+[11:55:08]     ep25   206/518 train_mae 6.01 lr 3.91e-05
+[11:56:30]     ep25   309/518 train_mae 5.98 lr 3.83e-05
+[11:57:57]     ep25   412/518 train_mae 5.97 lr 3.75e-05
+[11:59:27]     ep25   515/518 train_mae 5.97 lr 3.67e-05
+[12:00:06] [25/40] train 5.97 | val 5.89 (rmse 8.07) | KL 0.233 | val(ema) 5.86 | lr 37% | 7.7분  ** best.pt(ema) 5.86 **  [raw/ema 갱신]
+[12:01:32]     ep26   103/518 train_mae 6.05 lr 3.59e-05
+[12:02:57]     ep26   206/518 train_mae 5.91 lr 3.51e-05
+[12:04:24]     ep26   309/518 train_mae 5.96 lr 3.43e-05
+[12:05:48]     ep26   412/518 train_mae 5.97 lr 3.35e-05
+[12:07:11]     ep26   515/518 train_mae 5.96 lr 3.28e-05
+[12:07:47] [26/40] train 5.96 | val 5.96 (rmse 8.17) | KL 0.232 | val(ema) 5.84 | lr 33% | 7.7분  ** best.pt(ema) 5.84 **  [ema 갱신]
+[12:09:10]     ep27   103/518 train_mae 5.99 lr 3.20e-05
+[12:10:32]     ep27   206/518 train_mae 5.96 lr 3.12e-05
+[12:11:56]     ep27   309/518 train_mae 5.93 lr 3.05e-05
+[12:13:42]     ep27   412/518 train_mae 5.93 lr 2.97e-05
+[12:15:12]     ep27   515/518 train_mae 5.91 lr 2.90e-05
+[12:15:49] [27/40] train 5.90 | val 5.82 (rmse 8.02) | KL 0.229 | val(ema) 5.83 | lr 29% | 8.0분  ** best.pt(ema) 5.83 **  [raw/ema 갱신]
+[12:17:24]     ep28   103/518 train_mae 5.87 lr 2.82e-05
+[12:18:52]     ep28   206/518 train_mae 5.89 lr 2.75e-05
+[12:20:19]     ep28   309/518 train_mae 5.83 lr 2.68e-05
+[12:21:45]     ep28   412/518 train_mae 5.80 lr 2.60e-05
+[12:23:15]     ep28   515/518 train_mae 5.83 lr 2.53e-05
+[12:23:51] [28/40] train 5.83 | val 5.98 (rmse 8.17) | KL 0.226 | val(ema) 5.83 | lr 25% | 8.0분  ** best.pt(ema) 5.83 **  [ema 갱신]
+[12:25:19]     ep29   103/518 train_mae 5.83 lr 2.46e-05
+[12:26:50]     ep29   206/518 train_mae 5.93 lr 2.39e-05
+[12:28:16]     ep29   309/518 train_mae 5.88 lr 2.32e-05
+[12:29:47]     ep29   412/518 train_mae 5.81 lr 2.26e-05
+[12:31:13]     ep29   515/518 train_mae 5.82 lr 2.19e-05
+[12:31:54] [29/40] train 5.81 | val 5.84 (rmse 8.02) | KL 0.225 | val(ema) 5.83 | lr 22% | 8.0분  ** best.pt(ema) 5.83 **  [ema 갱신]
+[12:33:32]     ep30   103/518 train_mae 5.87 lr 2.12e-05
+[12:35:12]     ep30   206/518 train_mae 5.83 lr 2.06e-05
+[12:36:54]     ep30   309/518 train_mae 5.77 lr 1.99e-05
+[12:38:27]     ep30   412/518 train_mae 5.78 lr 1.93e-05
+[12:39:58]     ep30   515/518 train_mae 5.76 lr 1.87e-05
+[12:40:35] [30/40] train 5.76 | val 5.89 (rmse 8.05) | KL 0.223 | val(ema) 5.83 | lr 19% | 8.7분  ** best.pt(ema) 5.83 **  [ema 갱신]
+[12:42:09]     ep31   103/518 train_mae 5.73 lr 1.80e-05
+[12:43:49]     ep31   206/518 train_mae 5.69 lr 1.74e-05
+[12:45:28]     ep31   309/518 train_mae 5.72 lr 1.68e-05
+[12:47:03]     ep31   412/518 train_mae 5.73 lr 1.62e-05
+[12:48:31]     ep31   515/518 train_mae 5.75 lr 1.56e-05
+[12:49:07] [31/40] train 5.75 | val 5.95 (rmse 8.07) | KL 0.222 | val(ema) 5.83 | lr 16% | 8.5분  ** best.pt(ema) 5.83 **  [ema 갱신]
+[12:50:43]     ep32   103/518 train_mae 5.65 lr 1.51e-05
+[12:52:23]     ep32   206/518 train_mae 5.67 lr 1.45e-05
+[12:54:00]     ep32   309/518 train_mae 5.74 lr 1.40e-05
+[12:55:35]     ep32   412/518 train_mae 5.75 lr 1.34e-05
+[12:57:01]     ep32   515/518 train_mae 5.75 lr 1.29e-05
+[12:57:41] [32/40] train 5.74 | val 5.91 (rmse 8.13) | KL 0.221 | val(ema) 5.82 | lr 13% | 8.5분  ** best.pt(ema) 5.82 **  [ema 갱신]
+[12:59:20]     ep33   103/518 train_mae 5.71 lr 1.24e-05
+[13:01:01]     ep33   206/518 train_mae 5.70 lr 1.19e-05
+[13:02:39]     ep33   309/518 train_mae 5.67 lr 1.14e-05
+[13:04:04]     ep33   412/518 train_mae 5.66 lr 1.09e-05
+[13:05:35]     ep33   515/518 train_mae 5.69 lr 1.04e-05
+[13:06:20] [33/40] train 5.69 | val 5.82 (rmse 8.03) | KL 0.218 | val(ema) 5.82 | lr 10% | 8.6분  ** best.pt(ema) 5.82 **  [raw/ema 갱신]
+[13:08:00]     ep34   103/518 train_mae 5.73 lr 9.95e-06
+[13:09:37]     ep34   206/518 train_mae 5.76 lr 9.50e-06
+[13:11:05]     ep34   309/518 train_mae 5.70 lr 9.07e-06
+[13:12:35]     ep34   412/518 train_mae 5.65 lr 8.65e-06
+[13:14:14]     ep34   515/518 train_mae 5.65 lr 8.24e-06
+[13:14:57] [34/40] train 5.65 | val 5.84 (rmse 8.06) | KL 0.217 | val(ema) 5.82 | lr 8% | 8.6분
+[13:16:38]     ep35   103/518 train_mae 5.60 lr 7.83e-06
+[13:18:07]     ep35   206/518 train_mae 5.68 lr 7.44e-06
+[13:19:33]     ep35   309/518 train_mae 5.62 lr 7.07e-06
+[13:21:12]     ep35   412/518 train_mae 5.62 lr 6.71e-06
+[13:22:51]     ep35   515/518 train_mae 5.60 lr 6.36e-06
+[13:23:33] [35/40] train 5.60 | val 5.83 (rmse 8.04) | KL 0.215 | val(ema) 5.82 | lr 6% | 8.6분
+[13:25:08]     ep36   103/518 train_mae 5.61 lr 6.02e-06
+[13:26:35]     ep36   206/518 train_mae 5.63 lr 5.70e-06
+[13:28:11]     ep36   309/518 train_mae 5.67 lr 5.39e-06
+[13:29:50]     ep36   412/518 train_mae 5.62 lr 5.09e-06
+[13:31:28]     ep36   515/518 train_mae 5.62 lr 4.81e-06
+[13:32:08] [36/40] train 5.63 | val 5.82 (rmse 8.01) | KL 0.216 | val(ema) 5.82 | lr 5% | 8.6분  ** best.pt(ema) 5.82 **  [ema 갱신]
+[13:33:34]     ep37   103/518 train_mae 5.67 lr 4.53e-06
+[13:35:07]     ep37   206/518 train_mae 5.67 lr 4.28e-06
+[13:36:45]     ep37   309/518 train_mae 5.57 lr 4.03e-06
+[13:38:22]     ep37   412/518 train_mae 5.59 lr 3.80e-06
+[13:39:55]     ep37   515/518 train_mae 5.63 lr 3.59e-06
+[13:40:31] [37/40] train 5.63 | val 5.83 (rmse 8.00) | KL 0.215 | val(ema) 5.82 | lr 4% | 8.4분  ** best.pt(ema) 5.82 **  [ema 갱신]
+[13:41:59]     ep38   103/518 train_mae 5.74 lr 3.38e-06
+[13:43:36]     ep38   206/518 train_mae 5.63 lr 3.19e-06
+[13:45:13]     ep38   309/518 train_mae 5.63 lr 3.02e-06
+[13:46:50]     ep38   412/518 train_mae 5.60 lr 2.86e-06
+[13:48:21]     ep38   515/518 train_mae 5.60 lr 2.71e-06
+[13:48:58] [38/40] train 5.59 | val 5.83 (rmse 8.03) | KL 0.214 | val(ema) 5.82 | lr 3% | 8.4분
+[13:50:30]     ep39   103/518 train_mae 5.51 lr 2.57e-06
+[13:52:10]     ep39   206/518 train_mae 5.53 lr 2.45e-06
+[13:54:13]     ep39   309/518 train_mae 5.57 lr 2.35e-06
+[13:56:00]     ep39   412/518 train_mae 5.61 lr 2.26e-06
+[13:57:52]     ep39   515/518 train_mae 5.61 lr 2.18e-06
+[13:58:47] [39/40] train 5.62 | val 5.83 (rmse 8.02) | KL 0.215 | val(ema) 5.82 | lr 2% | 9.8분
+[14:00:34]     ep40   103/518 train_mae 5.50 lr 2.11e-06
+[14:02:17]     ep40   206/518 train_mae 5.53 lr 2.06e-06
+[14:03:52]     ep40   309/518 train_mae 5.55 lr 2.03e-06
+[14:05:39]     ep40   412/518 train_mae 5.60 lr 2.01e-06
+[14:07:26]     ep40   515/518 train_mae 5.58 lr 2.00e-06
+[14:08:08] [40/40] train 5.57 | val 5.82 (rmse 8.01) | KL 0.212 | val(ema) 5.82 | lr 2% | 9.3분
+[14:08:09] [스테이지2] 완료 · best val MAE = 5.82 개월 (규칙 'ema')
+[14:08:09] [스테이지2] 참고 · raw 최고 5.82 / ema 최고 5.82 -> 각각 best_raw.pt / best_ema.pt
+[14:08:09] [스테이지2] 종료 시점 LR = 피크의 2.0%  [정상 - 코사인 완주]
+[14:08:10] [backbone] convnext_tiny.fb_in22k_ft_in1k_384 (pretrained=False, drop_path=0.15)
+[14:08:10] [head] FiLM 성별조건화 stages=[2, 3] 채널=[384, 768] (0 초기화=항등)
+[14:08:10] [head] 입력 768x512 -> 특징맵 768x24x16 · head_type=gap
+[14:08:10] [head] 출력 240 (LDL 로짓 - softmax 기대값으로 환산)
+[14:08:10] ========================================================================
+[14:08:10] [스테이지3] 평가 시작
+[14:08:10]   백본     convnext_tiny.fb_in22k_ft_in1k_384
+[14:08:10]   헤드     gap | 화소처리 p1p99
+[14:08:10]   가중치   ema (선택 규칙 'ema')
+[14:08:10]   출력     LDL 240-way 기대값 회귀 (δ 15.0, λ 0.5)
+[14:08:10]   입력     768x512
+[14:08:10]   best val MAE 5.82 @ epoch 37
+[14:08:10]   [val] 예측 중...
+[14:09:09]   [calib] slope a=0.9681 intercept b=+3.65  (축소 존재)
+[14:09:09]   [calib] 채택 여부 False (val 5.80 -> 5.92)
+[14:09:09]   [train] 예측 중...
+[14:12:46]   [test] 예측 중...
+[14:12:56] [backbone] convnext_tiny.fb_in22k_ft_in1k_384 (pretrained=False, drop_path=0.15)
+[14:13:05] [backbone] convnext_tiny.fb_in22k_ft_in1k_384 (pretrained=False, drop_path=0.15)
+[14:13:37]   [경고] 성별 플립 테스트 실패: too many indices for array: array is 1-dimensional, but 2 were indexed
+[14:13:37]   학습곡선 저장: G:\Project\sinra_cho\checkpoints_convnext_single_v11_ldl\learning_curve.png
+[14:13:38]   산점도 저장: G:\Project\sinra_cho\checkpoints_convnext_single_v11_ldl\scatter.png
+[14:13:39]   오차 상위 저장: G:\Project\sinra_cho\checkpoints_convnext_single_v11_ldl\worst_cases.png
+[14:13:39]   [Grad-CAM] target = stages.3
+[14:13:43]   Grad-CAM 저장: G:\Project\sinra_cho\checkpoints_convnext_single_v11_ldl\gradcam.png
+[14:13:44]   연령분포 저장: G:\Project\sinra_cho\checkpoints_convnext_single_v11_ldl\age_distribution.png (평균 표준편차 22.7개월, 목표 δ=15.0 근방)
+[14:13:44]   캘리브레이션 계수 저장: G:\Project\sinra_cho\checkpoints_convnext_single_v11_ldl\calibration.json
+====================================================================
+ ConvNeXt-Tiny LDL 기대값 회귀 (bins 240, δ 15.0, λ 0.5) | 768x512 | 강도정규화 p1p99
+ 백본 convnext_tiny.fb_in22k_ft_in1k_384 | 헤드 gap
+ 실행 20260814_085820 | best epoch 37 (ema)
+ TTA [0, -6, -3, 3, 6]
+====================================================================
+ VAL(단일)        N= 1,399  MAE  5.82  RMSE  8.01  bias -0.26
+ VAL(+TTA)      N= 1,399  MAE  5.80  RMSE  7.99  bias -0.42
+ VAL(+calib)    N= 1,399  MAE  5.92  RMSE  8.13  bias -0.00   -> 미채택
+ TRAIN(단일)      N=12,440  MAE  5.21  RMSE  7.32  bias -0.14
+--------------------------------------------------------------------
+ TEST           N=   197  MAE  4.11  RMSE  5.29  bias +0.59  CI95 [3.67, 4.59]
+--------------------------------------------------------------------
+ [가중치 감사 · test, TTA 적용 / calib 미적용]
+   raw  ep 33  val  5.82  ->  test  4.16  CI95 [3.70, 4.64]
+   ema  ep 37  val  5.82  ->  test  4.11  CI95 [3.67, 4.59]
+   EMA - raw = -0.05 개월 (test 기준)
+   * 음수면 EMA 이득이 test 로 이어진 것, 양수면 val 에서만 좋았던 것.
+--------------------------------------------------------------------
+   0-4y    N=   9  MAE  3.09  bias +2.38
+   4-8y    N=  34  MAE  5.57  bias +2.61
+   8-12y   N=  64  MAE  4.99  bias +1.26
+   12-16y  N=  79  MAE  2.99  bias -0.76
+   >16y    N=  11  MAE  3.43  bias -1.36
+--------------------------------------------------------------------
+ [성별 분해 · test]
+   Male    N=   98  MAE  4.01  RMSE  5.26  bias +0.58  sigma  5.23  corr 0.9916  slope 0.9802
+   Female  N=   99  MAE  4.22  RMSE  5.31  bias +0.61  sigma  5.28  corr 0.9930  slope 0.9496
+--------------------------------------------------------------------
+ [성별 분해 · val]
+   Male    N=  761  MAE  5.51  RMSE  7.63  bias -0.04  sigma  7.63  corr 0.9836  slope 0.9704
+   Female  N=  638  MAE  6.15  RMSE  8.41  bias -0.87  sigma  8.36  corr 0.9760  slope 0.9560
+   판정: corr 차 0.0014 / slope 차 0.0306 -> 출력 스케일(캘리브레이션) 문제
+ [성별 x 연령 편향 · test]
+   구간        N_M   bias_M   MAE_M     N_F   bias_F   MAE_F
+   0-4y        2    +0.27    2.34       7    +2.99    3.30
+   4-8y       13    +0.44    6.32      21    +3.95    5.11
+   8-12y      28    +2.48    4.97      36    +0.32    5.00
+   12-16y     47    -0.13    3.04      32    -1.68    2.91
+   >16y        8    -1.65    2.96       3    -0.58    4.71
+====================================================================
+[14:13:44] 결과 저장: G:\Project\sinra_cho\checkpoints_convnext_single_v11_ldl\results.txt
+[14:13:44]          G:\Project\sinra_cho\checkpoints_convnext_single_v11_ldl\results.json
+[14:13:46] [backbone] convnext_tiny.fb_in22k_ft_in1k_384 (pretrained=False, drop_path=0.15)
+[14:13:47] 추론 함수 확인 [4360] 예측 170.0개월 / 실제 169개월
+[14:13:47] 추론 함수 준비 완료 · best.pt: G:\Project\sinra_cho\checkpoints_convnext_single_v11_ldl\best.pt
+[14:13:47] === 전체 완료 ===

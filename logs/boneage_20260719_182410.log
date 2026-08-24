@@ -1,0 +1,76 @@
+============================================================
+[18:24:17] 골연령 InceptionV3 + Bilinear (512) - 학습 프로세스 시작
+[18:24:17] PyTorch 2.6.0+cu124 | device cuda | CUDA True
+Traceback (most recent call last):
+  File "C:\ProgramData\gpu-guard\gpu_guard.py", line 438, in <module>
+    main()
+    ~~~~^^
+  File "C:\ProgramData\gpu-guard\gpu_guard.py", line 332, in main
+    sys.exit(gate_only(parse_kv(argv[1:])))
+             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\ProgramData\gpu-guard\gpu_guard.py", line 219, in gate_only
+    with LedgerLock():
+         ~~~~~~~~~~^^
+  File "C:\ProgramData\gpu-guard\common.py", line 34, in __enter__
+    self.fh = open(LOCK_PATH, "a+", encoding="utf-8")
+              ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'C:\\ProgramData\\gpu-guard\\ledger.lock'
+[18:24:18] GPU NVIDIA A100 80GB PCIe
+[18:24:18] IMG_SIZE 512 | CROP_MODE paper | USE_AUG False
+============================================================
+[18:24:18] 라벨 | train 12,611 | val 1,425 | test 200 | 나이 127.3±41.2개월
+[18:24:18] 전처리 캐시 유효 (paper/512) - 스킵
+[18:24:19] 사용 가능 | train 12,611 | val 1,425 | test 200
+[18:24:19] 배치 수 | train 788 | val 90 | test 13
+C:\Users\K\Project\sinra_cho\.venv\Lib\site-packages\torchvision\models\feature_extraction.py:175: UserWarning: NOTE: The nodes obtained by tracing the model in eval mode are a subsequence of those obtained in train mode. When choosing nodes for feature extraction, you may need to specify output nodes for train and eval mode separately.
+  warnings.warn(msg + suggestion_msg)
+[18:24:21] 이어서 학습: epoch 42부터 (이전 best val MAE 7.93)
+[18:24:21]   * 처음부터 다시 하려면 models 폴더의 last.pt 를 지우고 실행
+[18:24:21] 파라미터 22.9M | batch 16 | epochs 100 | lr 0.0001
+[18:24:36]   Epoch 42  50/788  train_mae 0.60  (15s)
+[18:24:46]   Epoch 42  100/788  train_mae 0.63  (26s)
+[18:24:57]   Epoch 42  150/788  train_mae 0.62  (36s)
+[18:25:07]   Epoch 42  200/788  train_mae 0.63  (47s)
+[18:25:18]   Epoch 42  250/788  train_mae 0.65  (57s)
+[18:25:28]   Epoch 42  300/788  train_mae 0.64  (68s)
+[18:25:39]   Epoch 42  350/788  train_mae 0.64  (78s)
+[18:25:49]   Epoch 42  400/788  train_mae 0.63  (89s)
+[18:26:00]   Epoch 42  450/788  train_mae 0.63  (99s)
+[18:26:11]   Epoch 42  500/788  train_mae 0.64  (110s)
+[18:26:21]   Epoch 42  550/788  train_mae 0.64  (120s)
+[18:26:32]   Epoch 42  600/788  train_mae 0.64  (131s)
+[18:26:42]   Epoch 42  650/788  train_mae 0.65  (141s)
+[18:26:53]   Epoch 42  700/788  train_mae 0.64  (152s)
+[18:27:03]   Epoch 42  750/788  train_mae 0.64  (163s)
+[18:27:11]   Epoch 42  788/788  train_mae 0.65  (171s)
+[18:27:24] [Epoch 42 완료] train MAE 0.65 | val MAE 7.96 | val RMSE 11.76 | lr 7.8e-07 | 개선없음 13/12
+[18:27:24] 조기종료 | 최고 val MAE 7.93 @ epoch 30
+============================================================
+[18:27:24] 최종 평가 (best.pt 로드)
+C:\Users\K\Project\sinra_cho\.venv\Lib\site-packages\torchvision\models\inception.py:43: FutureWarning: The default weight initialization of inception_v3 will be changed in future releases of torchvision. If you wish to keep the old behavior (which leads to long initialization times due to scipy/scipy#11299), please set init_weights=True.
+  warnings.warn(
+C:\Users\K\Project\sinra_cho\.venv\Lib\site-packages\torchvision\models\feature_extraction.py:175: UserWarning: NOTE: The nodes obtained by tracing the model in eval mode are a subsequence of those obtained in train mode. When choosing nodes for feature extraction, you may need to specify output nodes for train and eval mode separately.
+  warnings.warn(msg + suggestion_msg)
+[18:27:26]  split |      N |  MAE(mo) |  RMSE(mo) |    bias
+[18:29:12]  train | 12,611 |     0.73 |      1.86 |   +0.02
+[18:29:24]    val |  1,425 |     7.93 |     11.79 |   -0.15
+[18:29:26]   test |    200 |     9.62 |     15.56 |   +1.21
+======================================================
+골연령 InceptionV3+Bilinear (IMG=512, paper)
+2026-07-19 18:27
+======================================================
+ split |      N |  MAE(mo) |  RMSE(mo) |    bias
+ train | 12,611 |     0.73 |      1.86 |   +0.02
+   val |  1,425 |     7.93 |     11.79 |   -0.15
+  test |    200 |     9.62 |     15.56 |   +1.21
+------------------------------------------------------
+[test 연령대별]
+  group |     N |    MAE |   RMSE |   bias
+   0-4y |    10 |  13.52 |  21.34 |  +8.60
+   4-8y |    34 |  14.27 |  23.11 | +11.94
+  8-12y |    65 |   8.67 |  12.85 |  +3.69
+ 12-16y |    80 |   8.51 |  13.43 |  -5.46
+   >16y |    11 |   5.40 |   6.99 |  -4.78
+======================================================
+[18:29:28] 결과 저장: C:\Users\K\Project\sinra_cho\models\inceptionv3_bilinear_512_paper\results.txt
+[18:29:28] === 전체 완료 ===

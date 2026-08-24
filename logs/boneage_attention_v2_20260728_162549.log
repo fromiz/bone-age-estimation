@@ -1,0 +1,95 @@
+================================================================
+[16:25:53] Attention(R1/R2) + LDL 골연령 - v2 (손 크롭 폴더 입력) 시작
+[16:25:53] PyTorch 2.6.0+cu124 | torchvision 0.21.0+cu124 | timm 1.0.28
+[16:25:53] device cuda | CUDA True
+Traceback (most recent call last):
+  File "C:\ProgramData\gpu-guard\gpu_guard.py", line 438, in <module>
+    main()
+    ~~~~^^
+  File "C:\ProgramData\gpu-guard\gpu_guard.py", line 332, in main
+    sys.exit(gate_only(parse_kv(argv[1:])))
+             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\ProgramData\gpu-guard\gpu_guard.py", line 220, in gate_only
+    led = cleanup_dead_running(load_ledger())
+                               ~~~~~~~~~~~^^
+  File "C:\ProgramData\gpu-guard\common.py", line 54, in load_ledger
+    data = json.load(f)
+  File "G:\anaconda3\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "G:\anaconda3\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "G:\anaconda3\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\anaconda3\Lib\json\decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[16:25:53] GPU NVIDIA A100 80GB PCIe | CUDA 12.4
+[16:25:53] BASE_DIR       G:\Project\sinra_cho
+[16:25:53] HAND_CROP_DIR  G:\Project\sinra_cho\yolo_crop
+[16:25:53] 채널 ('hand', 'r1', 'r2') | tau(R1/R2) 30/30 | 정규화 div255 | 증강 False
+================================================================
+[16:25:53]   TRAIN_CSV OK  G:\Project\sinra_cho\yolo_crop_csv\train.csv
+[16:25:53]   VAL_CSV   OK  G:\Project\sinra_cho\yolo_crop_csv\Validation Dataset.csv
+[16:25:53]   TEST_CSV  OK  G:\Project\sinra_cho\yolo_crop_csv\Bone age ground truth.csv
+[16:25:53]   손크롭 train OK  G:\Project\sinra_cho\yolo_crop\train  (파일 12,611장)
+[16:25:54]   손크롭 val   OK  G:\Project\sinra_cho\yolo_crop\validation  (파일 1,425장)
+[16:25:54]   손크롭 test  OK  G:\Project\sinra_cho\yolo_crop\test  (파일 200장)
+[16:25:54]   · train: 라벨 12,611 -> 사용 12,539 (제외/미크롭 72)
+[16:25:54]   · val: 라벨 1,425 -> 사용 1,425 (제외/미크롭 0)
+[16:25:54]   · test: 라벨 200 -> 사용 200 (제외/미크롭 0)
+[16:25:54] 최종 | train 12,539 | val 1,425 | test 200 | 나이 127.5±40.9개월 | 남 54.2%
+[16:25:54] hand560 캐시 생성 (손 크롭 -> 560x560, pad=False)...
+[16:25:54]   hand560 train 2000/12539
+[16:25:54]   hand560 train 4000/12539
+[16:25:54]   hand560 train 6000/12539
+[16:25:55]   hand560 train 8000/12539
+[16:25:55]   hand560 train 10000/12539
+[16:25:56]   hand560 train 12000/12539
+[16:25:56] [hand560:train] 생성 67 | 스킵 12472 | 실패 0
+[16:25:56] [hand560:val] 생성 0 | 스킵 1425 | 실패 0
+[16:25:56] [hand560:test] 생성 0 | 스킵 200 | 실패 0
+[16:25:56] hand560 캐시 완료
+[16:25:56] 캐시 확인 후 | train 12,539 | val 1,425 | test 200
+[16:25:56] ### Phase I-a : Region-1(수근골) 국소화 + Erased 생성 ###
+[16:25:56] [cls-r1] 학습 완료 상태 - 로드만 수행 (cls_r1_best.pt)
+[16:25:57] [backbone] timm 'inception_v3' 로드 완료 (pretrained=False)
+[16:25:57] [cls-gmp] feat (2048, 16, 16) -> FC 2048->240
+[16:26:02] [r1:train] 정상 67 | 마스크실패(전체영역 대체) 0 | 파일없음 0
+[16:26:02] [r1:val] 정상 0 | 마스크실패(전체영역 대체) 0 | 파일없음 0
+[16:26:02] [r1:test] 정상 0 | 마스크실패(전체영역 대체) 0 | 파일없음 0
+[16:26:02] ### Phase I-b : Region-2(중수골) 국소화 ###
+[16:26:02] [cls-r2] 분류 모델 학습 | pool=gmp src=erased size=560 epochs=100
+[16:26:03] [backbone] timm 'inception_v3' 로드 완료 (pretrained=True)
+[16:26:03] [cls-gmp] feat (2048, 16, 16) -> FC 2048->240
+[16:26:12]   [cls-r2] ep01 100/1567 loss 0.2762 lr 3e-04 (9s)
+[16:26:20]   [cls-r2] ep01 200/1567 loss 0.2207 lr 3e-04 (18s)
+[16:26:29]   [cls-r2] ep01 300/1567 loss 0.1891 lr 3e-04 (26s)
+[16:26:37]   [cls-r2] ep01 400/1567 loss 0.1720 lr 3e-04 (35s)
+[16:26:47]   [cls-r2] ep01 500/1567 loss 0.1585 lr 3e-04 (44s)
+[16:26:56]   [cls-r2] ep01 600/1567 loss 0.1492 lr 3e-04 (54s)
+[16:27:06]   [cls-r2] ep01 700/1567 loss 0.1415 lr 3e-04 (63s)
+[16:27:16]   [cls-r2] ep01 800/1567 loss 0.1356 lr 3e-04 (73s)
+[16:27:25]   [cls-r2] ep01 900/1567 loss 0.1305 lr 3e-04 (83s)
+[16:27:35]   [cls-r2] ep01 1000/1567 loss 0.1261 lr 3e-04 (93s)
+[16:27:46]   [cls-r2] ep01 1100/1567 loss 0.1224 lr 3e-04 (103s)
+[16:27:56]   [cls-r2] ep01 1200/1567 loss 0.1196 lr 3e-04 (113s)
+[16:28:06]   [cls-r2] ep01 1300/1567 loss 0.1168 lr 3e-04 (124s)
+[16:28:17]   [cls-r2] ep01 1400/1567 loss 0.1143 lr 3e-04 (134s)
+[16:28:27]   [cls-r2] ep01 1500/1567 loss 0.1120 lr 3e-04 (145s)
+[16:28:35]   [cls-r2] ep01 1567/1567 loss 0.1106 lr 3e-04 (152s)
+[16:28:45]   [cls-r2] Epoch 01 완료 | train L1 0.1106 | val argmax-MAE 11.02 | * best 저장 (11.02)
+[16:28:56]   [cls-r2] ep02 100/1567 loss 0.0761 lr 3e-04 (11s)
+[16:29:07]   [cls-r2] ep02 200/1567 loss 0.0767 lr 3e-04 (21s)
+[16:29:17]   [cls-r2] ep02 300/1567 loss 0.0761 lr 3e-04 (31s)
+[16:29:27]   [cls-r2] ep02 400/1567 loss 0.0757 lr 3e-04 (42s)
+[16:29:38]   [cls-r2] ep02 500/1567 loss 0.0760 lr 3e-04 (52s)
+[16:29:48]   [cls-r2] ep02 600/1567 loss 0.0760 lr 3e-04 (62s)
+[16:29:58]   [cls-r2] ep02 700/1567 loss 0.0757 lr 3e-04 (72s)
+[16:30:08]   [cls-r2] ep02 800/1567 loss 0.0754 lr 3e-04 (82s)
+[16:30:19]   [cls-r2] ep02 900/1567 loss 0.0754 lr 3e-04 (93s)
+[16:30:29]   [cls-r2] ep02 1000/1567 loss 0.0747 lr 3e-04 (103s)

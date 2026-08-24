@@ -1,0 +1,66 @@
+================================================================
+[14:00:52] 골연령 Xception 회귀 - 프로세스 시작
+[14:00:52] PyTorch 2.6.0+cu124 | torchvision 0.21.0+cu124 | timm 1.0.28
+[14:00:52] device cuda | CUDA True
+Traceback (most recent call last):
+  File "C:\ProgramData\gpu-guard\gpu_guard.py", line 438, in <module>
+    main()
+    ~~~~^^
+  File "C:\ProgramData\gpu-guard\gpu_guard.py", line 332, in main
+    sys.exit(gate_only(parse_kv(argv[1:])))
+             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\ProgramData\gpu-guard\gpu_guard.py", line 220, in gate_only
+    led = cleanup_dead_running(load_ledger())
+                               ~~~~~~~~~~~^^
+  File "C:\ProgramData\gpu-guard\common.py", line 54, in load_ledger
+    data = json.load(f)
+  File "G:\anaconda3\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "G:\anaconda3\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "G:\anaconda3\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\anaconda3\Lib\json\decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[14:00:52] GPU NVIDIA A100 80GB PCIe | CUDA 12.4
+[14:00:52] BASE_DIR  G:\Project\sinra_cho
+[14:00:52] IMG_SIZE 512 | CROP_MODE advanced | EQUALIZE none | USE_AUG False
+[14:00:52] CACHE     G:\Project\sinra_cho\cache_preprocessed_1\advanced_512_none
+[14:00:52] CKPT      G:\Project\sinra_cho\checkpoints_xception
+================================================================
+[14:00:52]   TRAIN_IMG OK  G:\Project\sinra_cho\boneage-training-dataset\boneage-training-dataset
+[14:00:52]   TRAIN_CSV OK  G:\Project\sinra_cho\boneage-training-dataset\train.csv
+[14:00:52]   VAL_IMG   OK  G:\Project\sinra_cho\boneage-validation-dataset\boneage-validation-dataset
+[14:00:52]   VAL_CSV   OK  G:\Project\sinra_cho\boneage-validation-dataset\Validation Dataset.csv
+[14:00:52]   TEST_IMG  OK  G:\Project\sinra_cho\Bone Age Test Set\Test Set Images
+[14:00:52]   TEST_CSV  OK  G:\Project\sinra_cho\Bone Age Test Set\Bone age ground truth.csv
+[14:00:52]   · train: 이상 이미지 15장 제외
+[14:00:52] 라벨 | train 12,596 | val 1,425 | test 200 | 나이 127.31±41.17개월 | 남 54.2%
+[14:00:52] 전처리 캐시 유효 (advanced/512/none) - 스킵 (다시 만들려면 FORCE_REBUILD=True)
+[14:00:53] 사용 가능 | train 12,596 | val 1,425 | test 200
+[14:00:59] 크롭 QC 시트 저장: G:\Project\sinra_cho\checkpoints_xception\qc_crop.png (손/마커 상태를 눈으로 확인하세요)
+[14:00:59] train 증강: OFF (논문 재현 기준선)
+[14:00:59] [LDL] 라벨분포학습 ON - 타깃 z-정규화 비활성화 (출력이 개월 원단위)
+[14:00:59] 설정: {'GENDER_EMB_DIM': 32, 'HEAD_RELU': True, 'GENDER_RELU': True, 'BACKBONE': 'xception', 'IMG_SIZE': 512, 'CROP_MODE': 'advanced', 'USE_AUG': False, 'EQUALIZE': 'none', 'USE_LDL': True, 'AGE_BINS': 240, 'LDL_DELTA': 15.0, 'LDL_LAMBDA': 0.5}
+[14:00:59] batch 16 | epochs 100 | lr 0.0001 | auto_resume True
+[14:00:59] 배치 수 | train 787 | val 90 | test 13
+[14:01:00] [backbone] timm 'legacy_xception' 로드 완료 (pretrained=True)
+[14:01:00] [model] head = LDL softmax 240-way (식 6~8)
+[14:01:00] [model] backbone out = 2048x16x16 -> z dim = 6,400 (논문 9,216 = IMG_SIZE 608일 때)
+[14:01:00] [model] total params = 27.1M (논문 표4: 22.9M)
+[14:01:00] [LDL] loss = ℓ_MAE + 0.5·D_KL(G‖p) | bins 240 | δ 15.0
+Traceback (most recent call last):
+  File "G:\Project\sinra_cho\xception_boneage_age(att).py", line 941, in <module>
+    model.load_state_dict(ck["model"]); optimizer.load_state_dict(ck["optimizer"])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\Project\sinra_cho\.venv\Lib\site-packages\torch\nn\modules\module.py", line 2581, in load_state_dict
+    raise RuntimeError(
+RuntimeError: Error(s) in loading state_dict for XceptionRegressor:
+	size mismatch for fc.weight: copying a param with shape torch.Size([1, 6432]) from checkpoint, the shape in current model is torch.Size([240, 6432]).
+	size mismatch for fc.bias: copying a param with shape torch.Size([1]) from checkpoint, the shape in current model is torch.Size([240]).

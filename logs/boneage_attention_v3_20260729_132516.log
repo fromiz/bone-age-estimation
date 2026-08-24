@@ -1,0 +1,49 @@
+================================================================
+[13:25:22] Attention(R1/R2) + LDL 골연령 - v2 (손 크롭 폴더 입력) 시작
+[13:25:22] PyTorch 2.6.0+cu124 | torchvision 0.21.0+cu124 | timm 1.0.28
+[13:25:22] device cuda | CUDA True
+[GPU-GUARD] (inproc) 바로 실행 — 티켓 9번 infer 16000MiB
+[13:25:22] GPU NVIDIA A100 80GB PCIe | CUDA 12.4
+[13:25:22] BASE_DIR       G:\Project\sinra_cho
+[13:25:22] HAND_CROP_DIR  G:\Project\sinra_cho\yolo_crop
+[13:25:22] 채널 ('hand', 'r1', 'r2') | tau(R1/R2) 30/30 | 정규화 div255 | 증강 False
+================================================================
+[13:25:22]   TRAIN_CSV OK  G:\Project\sinra_cho\yolo_crop_csv\train.csv
+[13:25:22]   VAL_CSV   OK  G:\Project\sinra_cho\yolo_crop_csv\Validation Dataset.csv
+[13:25:22]   TEST_CSV  OK  G:\Project\sinra_cho\yolo_crop_csv\Bone age ground truth.csv
+[13:25:23]   손크롭 train OK  G:\Project\sinra_cho\yolo_crop\train  (파일 12,611장)
+[13:25:23]   손크롭 val   OK  G:\Project\sinra_cho\yolo_crop\validation  (파일 1,425장)
+[13:25:23]   손크롭 test  OK  G:\Project\sinra_cho\yolo_crop\test  (파일 200장)
+[13:25:23]   · train: 라벨 12,611 -> 사용 12,539 (제외/미크롭 72)
+[13:25:23]   · val: 라벨 1,425 -> 사용 1,425 (제외/미크롭 0)
+[13:25:23]   · test: 라벨 200 -> 사용 200 (제외/미크롭 0)
+[13:25:23] 최종 | train 12,539 | val 1,425 | test 200 | 나이 127.5±40.9개월 | 남 54.2%
+[13:25:23] hand560 캐시 유효 - 스킵
+[13:25:23] 캐시 확인 후 | train 12,539 | val 1,425 | test 200
+[13:25:23] ### Phase I-a : Region-1(수근골) 국소화 + Region-2(중수골 밴드) + Erased ###
+[13:25:23] [cls-r1] 학습 완료 상태 - 로드만 수행 (cls_r1_best.pt)
+[13:25:26] [backbone] timm 'inception_v3' 로드 완료 (pretrained=False)
+[13:25:26] [cls-gmp] feat (2048, 16, 16) -> FC 2048->240
+[13:25:29] [r1:train] 정상 0 | 마스크실패(전체영역 대체) 0 | 파일없음 0
+[13:25:29] [r2:train] CAM 기반 0 | 밴드 폴백 0
+[13:25:30] [r1:val] 정상 0 | 마스크실패(전체영역 대체) 0 | 파일없음 0
+[13:25:30] [r2:val] CAM 기반 0 | 밴드 폴백 0
+[13:25:30] [r1:test] 정상 0 | 마스크실패(전체영역 대체) 0 | 파일없음 0
+[13:25:30] [r2:test] CAM 기반 0 | 밴드 폴백 0
+[13:25:30] ### Phase I-b : 생략 (R2_MODE='band' - R2 는 Phase I-a 에서 생성됨) ###
+[13:25:30] R1/R2/E 캐시 완료
+[13:25:32] RoI QC 시트 저장: G:\Project\sinra_cho\checkpoints_attention_v3\qc_roi.png  <- 수근골이 제대로 잡혔는지 반드시 확인
+[13:25:32] Phase II 정규화 div255 | 증강 OFF (논문 기준선)
+[13:25:32] Phase II 설정: {'BACKBONE': 'xception', 'IMG_SIZE': 560, 'AGE_BINS': 240, 'GENDER_EMB_DIM': 32, 'HEAD_RELU': True, 'GENDER_RELU': True, 'LDL_DELTA': 15.0, 'LDL_LAMBDA': 0.5, 'AGG_CHANNELS': ['hand', 'r1', 'r2'], 'NORMALIZE': 'div255', 'USE_AUG': False, 'TAU_R1': 30, 'TAU_R2': 30, 'CLS_SIZE_REGION': 560, 'HAND_SQUARE_PAD': False, 'HAND_SOURCE': 'G:\\Project\\sinra_cho\\yolo_crop', 'BOX_CFG': {'r1': {'pad_x': 0.3, 'pad_y': 0.35, 'min_w': 0.55, 'min_h': 0.32}, 'r2': {'pad_x': 0.2, 'pad_y': 0.3, 'min_w': 0.8, 'min_h': 0.3}}, 'MERGE_COMPONENTS': True, 'R2_MODE': 'band', 'R2_BAND': [0.42, 0.06, 0.03, True], 'SQUARIFY': [False, True]}
+[13:25:32] 조기종료 | Phase I patience 8 | Phase II patience 15 (최소 65에폭 이후)
+[13:25:32] 배치 수 | train 1567 | val 179 | test 25
+[13:25:33] [backbone] timm 'legacy_xception' 로드 완료 (pretrained=True)
+[13:25:33] [reg] backbone out (2048, 18, 18) -> z 6,400 | params 27.1M
+[13:25:34] [LDL] loss = l_MAE + 0.5 * D_KL(G||p) | bins 240 | delta 15.0
+[13:25:34] Phase II 새로 학습 시작
+[13:26:34]   Epoch 001 100/1567 train_mae 21.95 kl 1.050 lr 3e-04 (61s)
+[13:27:16]   Epoch 001 200/1567 train_mae 18.82 kl 0.940 lr 3e-04 (102s)
+[13:27:58]   Epoch 001 300/1567 train_mae 17.15 kl 0.890 lr 3e-04 (144s)
+[13:28:39]   Epoch 001 400/1567 train_mae 15.92 kl 0.828 lr 3e-04 (185s)
+[13:29:21]   Epoch 001 500/1567 train_mae 14.86 kl 0.789 lr 3e-04 (227s)
+[13:30:02]   Epoch 001 600/1567 train_mae 14.10 kl 0.756 lr 3e-04 (269s)

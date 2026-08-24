@@ -1,0 +1,7 @@
+============================================================
+[22:31:28] Traceback (most recent call last):
+  File "C:\Users\K\Project\sinra_cho\inceptionv3_bilinear_512.py", line 192, in <module>
+    log("골연령 InceptionV3 + Bilinear (512) \u2014 학습 프로세스 시작")
+  File "C:\Users\K\Project\sinra_cho\inceptionv3_bilinear_512.py", line 140, in log
+    print(f"[{datetime.now():%H:%M:%S}]", *a, flush=True)
+UnicodeEncodeError: 'cp949' codec can't encode character '\u2014' in position 33: illegal multibyte sequence

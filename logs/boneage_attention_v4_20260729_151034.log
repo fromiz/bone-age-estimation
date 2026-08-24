@@ -1,0 +1,47 @@
+================================================================
+[15:10:39] Attention(R1/R2) + LDL 골연령 - v2 (손 크롭 폴더 입력) 시작
+[15:10:39] PyTorch 2.6.0+cu124 | torchvision 0.21.0+cu124 | timm 1.0.28
+[15:10:39] device cuda | CUDA True
+[GPU-GUARD] (inproc) 바로 실행 — 티켓 14번 infer 16000MiB
+[15:10:39] GPU NVIDIA A100 80GB PCIe | CUDA 12.4
+[15:10:39] BASE_DIR       G:\Project\sinra_cho
+[15:10:39] HAND_CROP_DIR  G:\Project\sinra_cho\yolo_crop
+[15:10:39] 채널 ('hand', 'r1', 'r2') | tau(R1/R2) 30/30 | 정규화 div255 | 증강 False
+================================================================
+[15:10:39]   TRAIN_CSV OK  G:\Project\sinra_cho\yolo_crop_csv\train.csv
+[15:10:39]   VAL_CSV   OK  G:\Project\sinra_cho\yolo_crop_csv\Validation Dataset.csv
+[15:10:39]   TEST_CSV  OK  G:\Project\sinra_cho\yolo_crop_csv\Bone age ground truth.csv
+[15:10:39]   손크롭 train OK  G:\Project\sinra_cho\yolo_crop\train  (파일 12,611장)
+[15:10:39]   손크롭 val   OK  G:\Project\sinra_cho\yolo_crop\validation  (파일 1,425장)
+[15:10:39]   손크롭 test  OK  G:\Project\sinra_cho\yolo_crop\test  (파일 200장)
+[15:10:39]   · train: 라벨 12,611 -> 사용 12,611 (제외/미크롭 0)
+[15:10:39]   · val: 라벨 1,425 -> 사용 1,425 (제외/미크롭 0)
+[15:10:39]   · test: 라벨 200 -> 사용 200 (제외/미크롭 0)
+[15:10:39] 최종 | train 12,611 | val 1,425 | test 200 | 나이 127.3±41.2개월 | 남 54.2%
+[15:10:39] hand560 캐시 생성 (손 크롭 -> 560x560, pad=False)...
+[15:10:40]   hand560 train 2000/12611
+[15:10:41]   hand560 train 4000/12611
+[15:11:24]   hand560 train 6000/12611
+[15:12:09]   hand560 train 8000/12611
+[15:12:54]   hand560 train 10000/12611
+[15:13:38]   hand560 train 12000/12611
+[15:13:52] [hand560:train] 생성 8635 | 스킵 3976 | 실패 0
+[15:14:23] [hand560:val] 생성 1425 | 스킵 0 | 실패 0
+[15:14:26] [hand560:test] 생성 200 | 스킵 0 | 실패 0
+[15:14:26] hand560 캐시 완료
+[15:14:27] 캐시 확인 후 | train 12,611 | val 1,425 | test 200
+[15:14:27] ### Phase I : R1(수근골) / R2(중수골) 독립 국소화 + Erased ###
+[15:14:27]   R1 밴드 {'x0': 0.12, 'y0': 0.52, 'x1': 0.88, 'y1': 0.98} | R2 밴드 {'x0': 0.06, 'y0': 0.1, 'x1': 0.94, 'y1': 0.62} | clamp True
+[15:14:27]   크기 맞추기: 자른 뒤 패딩(왜곡 0)
+[15:14:27] [cls-r1] 분류 모델 학습 | pool=gmp src=hand560 size=560 epochs=70
+[15:14:28] [backbone] timm 'inception_v3' 로드 완료 (pretrained=True)
+[15:14:28] [cls-gmp] feat (2048, 16, 16) -> FC 2048->240
+[15:14:43]   [cls-r1] ep01 100/1576 loss 0.2605 lr 3e-04 (15s)
+[15:14:57]   [cls-r1] ep01 200/1576 loss 0.2091 lr 3e-04 (29s)
+[15:15:11]   [cls-r1] ep01 300/1576 loss 0.1853 lr 3e-04 (43s)
+[15:15:25]   [cls-r1] ep01 400/1576 loss 0.1704 lr 3e-04 (57s)
+[15:15:39]   [cls-r1] ep01 500/1576 loss 0.1597 lr 3e-04 (71s)
+[15:15:53]   [cls-r1] ep01 600/1576 loss 0.1520 lr 3e-04 (85s)
+[15:16:07]   [cls-r1] ep01 700/1576 loss 0.1456 lr 3e-04 (99s)
+[15:16:21]   [cls-r1] ep01 800/1576 loss 0.1403 lr 3e-04 (113s)
+[15:16:35]   [cls-r1] ep01 900/1576 loss 0.1364 lr 3e-04 (127s)

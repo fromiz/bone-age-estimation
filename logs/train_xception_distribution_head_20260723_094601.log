@@ -1,0 +1,162 @@
+TORCH_HOME: G:\Project\sinra_cho\.torch_cache
+PyTorch Hub Ä³½Ã: G:\Project\sinra_cho\.torch_cache\hub
+================================================================================
+base_dir     : G:\Project\sinra_cho
+dataset_root : G:\Project\sinra_cho\cropped_dataset_v1_3ch_enhance
+train_csv    : G:\Project\sinra_cho\cropped_dataset_v1_3ch_enhance\train_filtered.csv
+val_csv      : G:\Project\sinra_cho\boneage-validation-dataset\Validation Dataset.csv
+test_csv     : G:\Project\sinra_cho\Bone Age Test Set\Bone age ground truth.csv
+train_img_dir: G:\Project\sinra_cho\cropped_dataset_v1_3ch_enhance\train
+val_img_dir  : G:\Project\sinra_cho\cropped_dataset_v1_3ch_enhance\val
+test_img_dir : G:\Project\sinra_cho\cropped_dataset_v1_3ch_enhance\test
+output_dir   : G:\Project\sinra_cho\xception_distribution_results
+device       : cuda, amp=True
+================================================================================
+[Model] image_feature_dim=6400, sex_dim=32, num_bins=240
+[Normalize] mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5)
+
+Epoch 001/35
+train_loss=0.09132 | val_loss=0.05841 | Val MAE=8.376 | RMSE=10.879 | KL=0.4703 | lr=[0.0001, 0.001]
+saved best: G:\Project\sinra_cho\xception_distribution_results\best_xception_distribution.pt (best_mae=8.376)
+
+Epoch 002/35
+train_loss=0.05770 | val_loss=0.05338 | Val MAE=7.908 | RMSE=10.744 | KL=0.4087 | lr=[0.0001, 0.001]
+saved best: G:\Project\sinra_cho\xception_distribution_results\best_xception_distribution.pt (best_mae=7.908)
+
+Epoch 003/35
+train_loss=0.05029 | val_loss=0.05075 | Val MAE=7.718 | RMSE=10.533 | KL=0.3719 | lr=[0.0001, 0.001]
+saved best: G:\Project\sinra_cho\xception_distribution_results\best_xception_distribution.pt (best_mae=7.718)
+
+Epoch 004/35
+train_loss=0.04529 | val_loss=0.04779 | Val MAE=7.366 | RMSE=10.196 | KL=0.3421 | lr=[0.0001, 0.001]
+saved best: G:\Project\sinra_cho\xception_distribution_results\best_xception_distribution.pt (best_mae=7.366)
+
+Epoch 005/35
+train_loss=0.04237 | val_loss=0.04804 | Val MAE=7.393 | RMSE=10.125 | KL=0.3448 | lr=[0.0001, 0.001]
+no improvement: 1/8
+
+Epoch 006/35
+train_loss=0.03965 | val_loss=0.04598 | Val MAE=7.014 | RMSE=9.620 | KL=0.3351 | lr=[0.0001, 0.001]
+saved best: G:\Project\sinra_cho\xception_distribution_results\best_xception_distribution.pt (best_mae=7.014)
+
+Epoch 007/35
+train_loss=0.03757 | val_loss=0.04883 | Val MAE=7.540 | RMSE=10.474 | KL=0.3482 | lr=[0.0001, 0.001]
+no improvement: 1/8
+
+Epoch 008/35
+train_loss=0.03491 | val_loss=0.04642 | Val MAE=7.094 | RMSE=9.994 | KL=0.3373 | lr=[0.0001, 0.001]
+no improvement: 2/8
+
+Epoch 009/35
+train_loss=0.03232 | val_loss=0.04842 | Val MAE=7.381 | RMSE=10.226 | KL=0.3533 | lr=[0.0001, 0.001]
+no improvement: 3/8
+
+Epoch 010/35
+train_loss=0.03022 | val_loss=0.04746 | Val MAE=7.178 | RMSE=9.809 | KL=0.3510 | lr=[5e-05, 0.0005]
+no improvement: 4/8
+
+Epoch 011/35
+train_loss=0.02405 | val_loss=0.04581 | Val MAE=6.947 | RMSE=9.553 | KL=0.3372 | lr=[5e-05, 0.0005]
+saved best: G:\Project\sinra_cho\xception_distribution_results\best_xception_distribution.pt (best_mae=6.947)
+
+Epoch 012/35
+train_loss=0.02155 | val_loss=0.04655 | Val MAE=6.946 | RMSE=9.649 | KL=0.3522 | lr=[5e-05, 0.0005]
+saved best: G:\Project\sinra_cho\xception_distribution_results\best_xception_distribution.pt (best_mae=6.946)
+
+Epoch 013/35
+train_loss=0.01942 | val_loss=0.04645 | Val MAE=6.999 | RMSE=9.584 | KL=0.3457 | lr=[5e-05, 0.0005]
+no improvement: 1/8
+
+Epoch 014/35
+train_loss=0.01825 | val_loss=0.04567 | Val MAE=6.837 | RMSE=9.563 | KL=0.3436 | lr=[5e-05, 0.0005]
+saved best: G:\Project\sinra_cho\xception_distribution_results\best_xception_distribution.pt (best_mae=6.837)
+
+Epoch 015/35
+train_loss=0.01732 | val_loss=0.04894 | Val MAE=7.090 | RMSE=9.911 | KL=0.3880 | lr=[5e-05, 0.0005]
+no improvement: 1/8
+
+Epoch 016/35
+train_loss=0.01653 | val_loss=0.04832 | Val MAE=6.954 | RMSE=9.751 | KL=0.3869 | lr=[5e-05, 0.0005]
+no improvement: 2/8
+
+Epoch 017/35
+train_loss=0.01573 | val_loss=0.04886 | Val MAE=7.139 | RMSE=9.846 | KL=0.3823 | lr=[5e-05, 0.0005]
+no improvement: 3/8
+
+Epoch 018/35
+train_loss=0.01510 | val_loss=0.04872 | Val MAE=7.030 | RMSE=9.630 | KL=0.3886 | lr=[2.5e-05, 0.00025]
+no improvement: 4/8
+
+Epoch 019/35
+train_loss=0.01290 | val_loss=0.04707 | Val MAE=6.944 | RMSE=9.591 | KL=0.3627 | lr=[2.5e-05, 0.00025]
+no improvement: 5/8
+
+Epoch 020/35
+train_loss=0.01187 | val_loss=0.04678 | Val MAE=6.834 | RMSE=9.585 | KL=0.3660 | lr=[2.5e-05, 0.00025]
+saved best: G:\Project\sinra_cho\xception_distribution_results\best_xception_distribution.pt (best_mae=6.834)
+
+Epoch 021/35
+train_loss=0.01116 | val_loss=0.04743 | Val MAE=6.883 | RMSE=9.481 | KL=0.3751 | lr=[2.5e-05, 0.00025]
+no improvement: 1/8
+
+Epoch 022/35
+train_loss=0.01112 | val_loss=0.04765 | Val MAE=6.818 | RMSE=9.405 | KL=0.3848 | lr=[2.5e-05, 0.00025]
+saved best: G:\Project\sinra_cho\xception_distribution_results\best_xception_distribution.pt (best_mae=6.818)
+
+Epoch 023/35
+train_loss=0.01058 | val_loss=0.04739 | Val MAE=6.902 | RMSE=9.548 | KL=0.3726 | lr=[2.5e-05, 0.00025]
+no improvement: 1/8
+
+Epoch 024/35
+train_loss=0.01041 | val_loss=0.04733 | Val MAE=6.875 | RMSE=9.527 | KL=0.3738 | lr=[2.5e-05, 0.00025]
+no improvement: 2/8
+
+Epoch 025/35
+train_loss=0.00995 | val_loss=0.04671 | Val MAE=6.748 | RMSE=9.410 | KL=0.3718 | lr=[2.5e-05, 0.00025]
+saved best: G:\Project\sinra_cho\xception_distribution_results\best_xception_distribution.pt (best_mae=6.748)
+
+Epoch 026/35
+train_loss=0.00980 | val_loss=0.04672 | Val MAE=6.778 | RMSE=9.391 | KL=0.3696 | lr=[2.5e-05, 0.00025]
+no improvement: 1/8
+
+Epoch 027/35
+train_loss=0.00965 | val_loss=0.04694 | Val MAE=6.794 | RMSE=9.480 | KL=0.3726 | lr=[2.5e-05, 0.00025]
+no improvement: 2/8
+
+Epoch 028/35
+train_loss=0.00944 | val_loss=0.04702 | Val MAE=6.780 | RMSE=9.443 | KL=0.3755 | lr=[2.5e-05, 0.00025]
+no improvement: 3/8
+
+Epoch 029/35
+train_loss=0.00948 | val_loss=0.04739 | Val MAE=6.850 | RMSE=9.468 | KL=0.3769 | lr=[1.25e-05, 0.000125]
+no improvement: 4/8
+
+Epoch 030/35
+train_loss=0.00852 | val_loss=0.04675 | Val MAE=6.755 | RMSE=9.372 | KL=0.3722 | lr=[1.25e-05, 0.000125]
+no improvement: 5/8
+
+Epoch 031/35
+train_loss=0.00803 | val_loss=0.04675 | Val MAE=6.736 | RMSE=9.338 | KL=0.3736 | lr=[1.25e-05, 0.000125]
+saved best: G:\Project\sinra_cho\xception_distribution_results\best_xception_distribution.pt (best_mae=6.736)
+
+Epoch 032/35
+train_loss=0.00790 | val_loss=0.04703 | Val MAE=6.782 | RMSE=9.402 | KL=0.3754 | lr=[1.25e-05, 0.000125]
+no improvement: 1/8
+
+Epoch 033/35
+train_loss=0.00778 | val_loss=0.04704 | Val MAE=6.784 | RMSE=9.398 | KL=0.3754 | lr=[1.25e-05, 0.000125]
+no improvement: 2/8
+
+Epoch 034/35
+train_loss=0.00763 | val_loss=0.04714 | Val MAE=6.757 | RMSE=9.393 | KL=0.3797 | lr=[1.25e-05, 0.000125]
+no improvement: 3/8
+
+Epoch 035/35
+train_loss=0.00745 | val_loss=0.04664 | Val MAE=6.721 | RMSE=9.369 | KL=0.3727 | lr=[1.25e-05, 0.000125]
+saved best: G:\Project\sinra_cho\xception_distribution_results\best_xception_distribution.pt (best_mae=6.721)
+
+================================================================================
+BEST: epoch=35, Val MAE=6.721
+================================================================================
+Final Val MAE=6.721, RMSE=9.369
+Final Test MAE=6.147, RMSE=7.750

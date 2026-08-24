@@ -1,0 +1,124 @@
+TORCH_HOME: C:\Users\K\Project\sinra_cho\.torch_cache
+PyTorch Hub 캐시: C:\Users\K\Project\sinra_cho\.torch_cache\hub
+================================================================================
+Experiment: xception_crop_histeq_512_target_norm
+Device: cuda
+PyTorch: 2.6.0+cu124
+timm: 1.0.28
+GPU: NVIDIA A100 80GB PCIe
+================================================================================
+Train CSV: True | C:\Users\K\Project\sinra_cho\cropped_dataset_histeq\train_filtered.csv
+Train image dir: True | C:\Users\K\Project\sinra_cho\cropped_dataset_histeq\train
+Validation CSV: True | C:\Users\K\Project\sinra_cho\boneage-validation-dataset\Validation Dataset.csv
+Validation image dir: True | C:\Users\K\Project\sinra_cho\cropped_dataset_histeq\val
+
+[CSV]
+Train: (12576, 3)
+Validation: (1425, 3)
+
+[Target Normalization]
+TARGET_MEAN: 127.3785782442748
+TARGET_STD: 41.09851674508998
+train: 12576 images
+val: 1425 images
+Train missing images: 0
+Validation missing images: 0
+
+[Train]
+count: 12576
+boneage mean: 127.379
+boneage std: 41.099
+boneage min: 1.0
+boneage max: 228.0
+male ratio: 0.542
+
+[Validation]
+count: 1425
+boneage mean: 127.156
+boneage std: 41.722
+boneage min: 3.0
+boneage max: 228.0
+male ratio: 0.542
+
+[DataLoader]
+Train samples: 12576
+Validation samples: 1425
+Train batches: 786
+Validation batches: 45
+Image shape: torch.Size([16, 3, 512, 512])
+Sex shape: torch.Size([16, 1])
+Bone age norm shape: torch.Size([16])
+Bone age month shape: torch.Size([16])
+Bone age month examples: tensor([132., 162., 144., 138.,  82.])
+Bone age norm examples: tensor([ 0.1124,  0.8424,  0.4044,  0.2584, -1.1041])
+image_feature_dim: 6400
+
+[Model]
+Model device: cuda:0
+Total parameters: 25,532,297
+Trainable parameters: 25,532,297
+Xception feature: torch.Size([2, 2048, 16, 16])
+Conv feature: torch.Size([2, 256, 16, 16])
+Pool feature: torch.Size([2, 256, 5, 5])
+Image vector: torch.Size([2, 6400])
+Sex vector: torch.Size([2, 32])
+Prediction norm: torch.Size([2])
+Prediction month: torch.Size([2])
+
+[Training Start]
+BEST_MODEL_PATH: C:\Users\K\Project\sinra_cho\models\best_xception_crop_histeq_512_target_norm.pt
+HISTORY_PATH: C:\Users\K\Project\sinra_cho\models\history_xception_crop_histeq_512_target_norm.csv
+================================================================================
+Epoch 01 | Train MAE: 13.592개월 | Val MAE: 10.384개월 | Val RMSE: 13.145개월 | Norm Loss: 0.2527 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 743.3s
+최적 모델 저장: 10.384개월
+Epoch 02 | Train MAE: 8.958개월 | Val MAE: 9.234개월 | Val RMSE: 12.056개월 | Norm Loss: 0.2247 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 653.7s
+최적 모델 저장: 9.234개월
+Epoch 03 | Train MAE: 8.391개월 | Val MAE: 8.053개월 | Val RMSE: 10.490개월 | Norm Loss: 0.1959 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 652.7s
+최적 모델 저장: 8.053개월
+Epoch 04 | Train MAE: 7.709개월 | Val MAE: 8.113개월 | Val RMSE: 11.051개월 | Norm Loss: 0.1974 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 653.6s
+성능 미개선: 1/8
+Epoch 05 | Train MAE: 7.449개월 | Val MAE: 7.682개월 | Val RMSE: 10.275개월 | Norm Loss: 0.1869 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 651.9s
+최적 모델 저장: 7.682개월
+Epoch 06 | Train MAE: 7.069개월 | Val MAE: 9.246개월 | Val RMSE: 12.038개월 | Norm Loss: 0.2250 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 654.1s
+성능 미개선: 1/8
+Epoch 07 | Train MAE: 6.917개월 | Val MAE: 7.445개월 | Val RMSE: 9.946개월 | Norm Loss: 0.1812 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 649.3s
+최적 모델 저장: 7.445개월
+Epoch 08 | Train MAE: 6.593개월 | Val MAE: 8.142개월 | Val RMSE: 10.655개월 | Norm Loss: 0.1981 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 648.5s
+성능 미개선: 1/8
+Epoch 09 | Train MAE: 6.384개월 | Val MAE: 7.651개월 | Val RMSE: 10.229개월 | Norm Loss: 0.1862 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 645.0s
+성능 미개선: 2/8
+Epoch 10 | Train MAE: 6.183개월 | Val MAE: 7.496개월 | Val RMSE: 10.019개월 | Norm Loss: 0.1824 | Backbone LR: 1.00e-04 | Head LR: 1.00e-03 | Time: 652.6s
+성능 미개선: 3/8
+Epoch 11 | Train MAE: 5.894개월 | Val MAE: 7.830개월 | Val RMSE: 10.490개월 | Norm Loss: 0.1905 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 647.1s
+성능 미개선: 4/8
+Epoch 12 | Train MAE: 4.956개월 | Val MAE: 7.273개월 | Val RMSE: 9.813개월 | Norm Loss: 0.1770 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 648.3s
+최적 모델 저장: 7.273개월
+Epoch 13 | Train MAE: 4.601개월 | Val MAE: 7.993개월 | Val RMSE: 10.882개월 | Norm Loss: 0.1945 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 650.9s
+성능 미개선: 1/8
+Epoch 14 | Train MAE: 4.343개월 | Val MAE: 7.434개월 | Val RMSE: 10.059개월 | Norm Loss: 0.1809 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 647.5s
+성능 미개선: 2/8
+Epoch 15 | Train MAE: 4.146개월 | Val MAE: 7.452개월 | Val RMSE: 10.066개월 | Norm Loss: 0.1813 | Backbone LR: 5.00e-05 | Head LR: 5.00e-04 | Time: 646.1s
+성능 미개선: 3/8
+Epoch 16 | Train MAE: 3.882개월 | Val MAE: 7.360개월 | Val RMSE: 9.886개월 | Norm Loss: 0.1791 | Backbone LR: 2.50e-05 | Head LR: 2.50e-04 | Time: 644.9s
+성능 미개선: 4/8
+Epoch 17 | Train MAE: 3.424개월 | Val MAE: 7.323개월 | Val RMSE: 9.952개월 | Norm Loss: 0.1782 | Backbone LR: 2.50e-05 | Head LR: 2.50e-04 | Time: 644.5s
+성능 미개선: 5/8
+Epoch 18 | Train MAE: 3.182개월 | Val MAE: 7.350개월 | Val RMSE: 9.952개월 | Norm Loss: 0.1788 | Backbone LR: 2.50e-05 | Head LR: 2.50e-04 | Time: 644.7s
+성능 미개선: 6/8
+Epoch 19 | Train MAE: 3.057개월 | Val MAE: 7.320개월 | Val RMSE: 9.893개월 | Norm Loss: 0.1781 | Backbone LR: 2.50e-05 | Head LR: 2.50e-04 | Time: 648.1s
+성능 미개선: 7/8
+Epoch 20 | Train MAE: 2.911개월 | Val MAE: 7.328개월 | Val RMSE: 9.904개월 | Norm Loss: 0.1783 | Backbone LR: 1.25e-05 | Head LR: 1.25e-04 | Time: 647.8s
+성능 미개선: 8/8
+Early stopping
+================================================================================
+Training finished
+Best Validation MAE: 7.273개월
+Total time: 218.0 min
+================================================================================
+
+[Best Validation Result]
+Best epoch: 12
+Saved best Val MAE: 7.273411174573396
+Reloaded Val MAE: 7.273411174573396
+Reloaded Val RMSE: 9.812505192181412
+Validation prediction saved: C:\Users\K\Project\sinra_cho\models\val_predictions_xception_crop_histeq_512_target_norm.csv
