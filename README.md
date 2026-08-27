@@ -5,7 +5,7 @@ GP atlas 육안 대조 방식의 판독자 간 편차와 건당 수 분의 판�
 
 | 항목 | 내용 |
 |---|---|
-| 기간 | 2026.07 ~ 2026.08 (개인 프로젝트) |
+| 기간 | 2026.07 ~ 2026.08 |
 | 최종 성능 | **Test MAE 4.05개월** / Val MAE 5.81개월 |
 | 데이터 | train 12,611장 / val 1,425장 / test 200장 |
 | 핵심 스택 | PyTorch, ConvNeXt-Tiny, YOLO, Segmentation, LDL, FiLM, TTA |
