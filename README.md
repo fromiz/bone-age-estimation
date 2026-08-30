@@ -6,7 +6,8 @@ GP atlas 육안 대조 방식의 판독자 간 편차와 건당 수 분의 판�
 | 항목 | 내용 |
 |---|---|
 | 기간 | 2026.07 ~ 2026.08 |
-| 최종 성능 | **Test MAE 4.05개월** / Val MAE 5.81개월 |
+| 수행 형태 | 아이키커 Team 7인 — 각자 모델 개발 후 최종안 선정. **본인 모델이 최종 채택되어 팀 발표 자료 및 웹 플랫폼 기준 모델로 사용** |
+| 최종 성능 | **Test MAE 4.05개월** / Val MAE 5.81개월 / Test RMSE 5.10개월 / **기업 제공 외부 데이터 6.17개월** |
 | 데이터 | train 12,611장 / val 1,425장 / test 200장 |
 | 핵심 스택 | PyTorch, ConvNeXt-Tiny, YOLO, Segmentation, LDL, FiLM, TTA |
 
@@ -20,6 +21,11 @@ GP atlas 육안 대조 방식의 판독자 간 편차와 건당 수 분의 판�
 → ConvNeXt-Tiny + FiLM 성별 조건화 → LDL 240-bin → 5각 TTA 후처리
 
 ## 성능 개선 이력
+
+- 손 bbox **158장** 직접 라벨링 → YOLOX-S 검출 모델 학습
+- 마스크 **178장** 직접 라벨링 → DeepLabV3-MobileNetV3-Large 학습
+- 백본 3종 비교: ConvNeXt-Tiny 6.343 / ConvNeXt-Small 6.347 / EfficientNet-B0 6.716
+- 이상 데이터 6개 유형(이물질·자세이상·외부신체·기형·손잘림·사진이상) 기준 전수 확인
 
 | 버전 | 변경점 | Test MAE |
 |---|---|---|
